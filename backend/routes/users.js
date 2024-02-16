@@ -1,44 +1,112 @@
 var express = require('express');
 var router = express.Router();
-const connection = require('../lib/connect.js')
+const connection = require('../lib/connect.js');
+const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 
 /* GET users listing. */
-router.get('/', function(req, res, ) {
-
-  connection.connect((err) => {
-    if (err) console.log('err', err);
-
-    let query = "SELECT * FROM users"
-
-    connection.query(query, (err, data) => {
+router.get('/', function (req, res) {
+  try {    
+    connection.connect((err) => {
       if (err) console.log('err', err);
-
-      console.log('users', data);;
-      res.json(data)
-    })
-  })
+  
+      let query = 'SELECT * FROM users';
+  
+      connection.query(query, (err, data) => {
+        if (err) console.log('err', err);
+  
+        console.log('users', data);
+        const userId = data.map(user => user.userId);
+        res.json({userId});
+      });
+    });
+  } catch (error) {
+		console.log('ERROR', error);
+		res.status(500).json({ error: 'something went wrong' });
+	}
 });
 
-router.post('/add', function(req, res, ) {
 
-  let userId = req.body.userId
-  let userName = req.body.userName
-  let userEmail = req.body.userEmail
-  let password = req.body.password
+router.post('/add', async function (req, res) {
+	try {
+		let uuid = crypto.randomUUID();
+		const cryptedPass = await bcrypt.hash(req.body.password, 10);
 
-  connection.connect((err) => {
-    if (err) console.log('err', err);
+		let userId = uuid;
+		let userName = req.body.userName;
+		let userEmail = req.body.userEmail;
+		let password = cryptedPass;
 
-    let query = "INSERT into users (userId, userName, userEmail, password) VALUES (?,?,?,?)"
-    let values = [userId, userName, userEmail,password]
+		connection.connect((err) => {
+			if (err) console.log('err', err);
+			let checkExisting = 'SELECT * FROM users WHERE userEmail = ?';
+			let query =
+				'INSERT into users (userId, userName, userEmail, password) VALUES (?,?,?,?)';
 
-    connection.query(query,values, (err, data) => {
-      if (err) console.log('err', err);
+			let values = [userId, userName, userEmail, password];
 
-      console.log('users', data);;
-      res.json({data})
-    })
-  })
+			connection.query(checkExisting, [userEmail], (err, data) => {
+        if (err) {
+          return res.status(401).json({
+            message: 'Sign-up failed',
+          });
+        }
+				if (data.length > 0) {
+					return res
+						.status(409)
+						.json({ message: 'E-mail address already exists' });
+				} else {
+					connection.query(query, values, (err, data) => {
+            if (err) {
+              return res.status(401).json({
+                message: 'Sign-up failed',
+              });
+            }
+						console.log('Sign-up successful!', data);
+						res.json({ data });
+					});
+				}
+			});
+		});
+	} catch (error) {
+		console.log('ERROR', error);
+		res.status(500).json({ error: 'something went wrong' });
+	}
+});
+
+router.post('/login', async function (req, res) {
+  try {
+    let userEmail = req.body.userEmail;
+    let password = req.body.password;
+
+    let query = 'SELECT * FROM users WHERE userEmail = ?';
+
+    connection.query(query, [userEmail], async (err, data) => {
+      if (err) {
+        console.log('err', err);
+        return res.status(401).json({ message: 'Login failed' });
+      }
+
+      if (data.length < 1) {
+        return res.status(404).json({ message: 'User does not exist' });
+      } else {
+        storedPass = data[0].password
+        const comparePass = await bcrypt.compare(password, storedPass);
+
+        if (comparePass) {
+
+          console.log('Login successful!', data[0]);
+          res.json({ user: data[0] });
+        } else {
+          console.log('Incorrect E-mail or password');
+          res.status(401).json({ message: 'Incorrect E-mail or password' });
+        }
+      }
+    });
+  } catch (error) {
+    console.log('ERROR', error);
+    res.status(500).json({ error: 'Something went wrong, please try again' });
+  }
 });
 
 module.exports = router;
