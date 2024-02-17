@@ -17,7 +17,7 @@ router.get('/', function (req, res) {
   
         console.log('users', data);
         const userId = data.map(user => user.userId);
-        res.json({userId});
+        res.status(200).json({userId});
       });
     });
   } catch (error) {
@@ -25,6 +25,8 @@ router.get('/', function (req, res) {
 		res.status(500).json({ error: 'something went wrong' });
 	}
 });
+
+
 
 
 router.post('/add', async function (req, res) {
@@ -63,7 +65,7 @@ router.post('/add', async function (req, res) {
               });
             }
 						console.log('Sign-up successful!', data);
-						res.json({ data });
+						res.status(200).json({ data });
 					});
 				}
 			});
@@ -84,22 +86,22 @@ router.post('/login', async function (req, res) {
     connection.query(query, [userEmail], async (err, data) => {
       if (err) {
         console.log('err', err);
-        return res.status(401).json({ message: 'Login failed' });
+        return res.status(500).json({ message: 'Login failed' });
       }
 
       if (data.length < 1) {
         return res.status(404).json({ message: 'User does not exist' });
       } else {
-        storedPass = data[0].password
+        let storedPass = data[0].password
         const comparePass = await bcrypt.compare(password, storedPass);
 
         if (comparePass) {
 
           console.log('Login successful!', data[0]);
-          res.json({ user: data[0] });
+          res.status(200).json(data);
         } else {
           console.log('Incorrect E-mail or password');
-          res.status(401).json({ message: 'Incorrect E-mail or password' });
+          res.status(409).json({ message: 'Incorrect E-mail or password' });
         }
       }
     });
@@ -108,5 +110,33 @@ router.post('/login', async function (req, res) {
     res.status(500).json({ error: 'Something went wrong, please try again' });
   }
 });
+
+router.put('/change/:userId', async function (req, res) {
+  try {
+    const cryptedPass = await bcrypt.hash(req.body.password, 10);
+
+    let userId = req.params.userId;
+    let userName = req.body.userName;
+    let userEmail = req.body.userEmail
+		let password = cryptedPass;
+
+    let query = 'UPDATE users SET userName = ?, userEmail = ?, password = ? WHERE userId = ?';
+    let values = [userName, userEmail, password, userId]
+    connection.query(query, values, async (err, data) => {
+      if (err) {
+        console.log('err', err);
+        return res.status(401).json({ message: 'Error' });
+      }
+          console.log(data);
+          res.status(200).json({ message: 'Information updated successfully' });
+        
+      
+    });
+  } catch (error) {
+    console.log('ERROR', error);
+    res.status(500).json({ error: 'Something went wrong, please try again' });
+  }
+});
+
 
 module.exports = router;

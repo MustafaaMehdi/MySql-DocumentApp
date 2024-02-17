@@ -1,0 +1,39 @@
+// DOCUMENTS
+
+// Get all users documents
+GET http://localhost:3000/api/users
+
+###
+
+// Add user
+POST http://localhost:3000/api/users/add
+Content-Type: application/json
+
+{
+"userName": "My User",
+"userEmail": "My Email",
+"password": "My Password"
+}
+###
+
+// Login user
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+
+{
+"userEmail": "My Email",
+"password": "My Password"
+}
+###
+
+// Change user details
+PUT http://localhost:3000/api/users/change/2
+Content-Type: application/json
+
+{
+"userId": "25311416524346115612312fadsfasd",
+"userName": "MyChangedName",
+"userEmail": "MyChangedEmail",
+"password": "MyChangedPassword"
+}
+###

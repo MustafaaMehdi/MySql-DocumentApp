@@ -1,0 +1,46 @@
+// DOCUMENTS
+
+// Get all users documents
+GET http://localhost:3000/api/document/all/2
+
+###
+
+// Get specic document
+GET http://localhost:3000/api/document/6
+Content-Type: application/json
+
+{
+"userId": "2"
+}
+###
+
+// Post document for specific user
+POST http://localhost:3000/api/document/add
+Content-Type: application/json
+
+{
+"userId": "2",
+"title": "My Title",
+"documentBody": "My document body"
+}
+###
+
+// Update specific document
+PUT http://localhost:3000/api/document/update/5
+Content-Type: application/json
+
+{
+"userId": "2",
+"title": "My Title",
+"documentBody": "My document body"
+}
+###
+
+// Soft-delete specific document
+DELETE http://localhost:3000/api/document/delete/10
+Content-Type: application/json
+
+{
+"userId": "2"
+}
+###
