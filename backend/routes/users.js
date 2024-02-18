@@ -62,7 +62,7 @@ router.post('/add', async function (req, res) {
 							});
 						}
 						console.log('Sign-up successful!', data);
-						res.status(200).json({ data });
+						res.status(200).json(data);
 					});
 				}
 			});

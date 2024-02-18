@@ -1,3 +1,5 @@
+import checkLoginState from "./checkLoginState.js";
+
 export default function loginUser() {
     console.log('Login');
     let sendUser = {
@@ -18,7 +20,7 @@ export default function loginUser() {
 			if (user.id) {
 				localStorage.setItem('loggedInUser', user.id);
 				localStorage.setItem('loggedInUserName', user.name);
-                // checkLoginState()
+                checkLoginState()
 			} else {
 				console.log('STOP wrong user data');
 			}
