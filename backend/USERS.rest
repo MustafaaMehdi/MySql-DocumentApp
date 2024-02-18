@@ -27,11 +27,10 @@ Content-Type: application/json
 ###
 
 // Change user details
-PUT http://localhost:3000/api/users/change/2
+PUT http://localhost:3000/api/users/change/25311416524346115612312fadsfasd
 Content-Type: application/json
 
 {
-"userId": "25311416524346115612312fadsfasd",
 "userName": "MyChangedName",
 "userEmail": "MyChangedEmail",
 "password": "MyChangedPassword"

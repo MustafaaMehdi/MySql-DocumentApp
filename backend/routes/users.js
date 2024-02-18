@@ -6,28 +6,25 @@ const crypto = require('crypto');
 
 /* GET users listing. */
 router.get('/', function (req, res) {
-  try {    
-    connection.connect((err) => {
-      if (err) console.log('err', err);
-  
-      let query = 'SELECT * FROM users';
-  
-      connection.query(query, (err, data) => {
-        if (err) console.log('err', err);
-  
-        console.log('users', data);
-        const userId = data.map(user => user.userId);
-        res.status(200).json({userId});
-      });
-    });
-  } catch (error) {
+	try {
+		connection.connect((err) => {
+			if (err) console.log('err', err);
+
+			let query = 'SELECT * FROM users';
+
+			connection.query(query, (err, data) => {
+				if (err) console.log('err', err);
+
+				console.log('users', data);
+				const userId = data.map((user) => user.userId);
+				res.status(200).json({ userId });
+			});
+		});
+	} catch (error) {
 		console.log('ERROR', error);
 		res.status(500).json({ error: 'something went wrong' });
 	}
 });
-
-
-
 
 router.post('/add', async function (req, res) {
 	try {
@@ -48,22 +45,22 @@ router.post('/add', async function (req, res) {
 			let values = [userId, userName, userEmail, password];
 
 			connection.query(checkExisting, [userEmail], (err, data) => {
-        if (err) {
-          return res.status(401).json({
-            message: 'Sign-up failed',
-          });
-        }
+				if (err) {
+					return res.status(401).json({
+						message: 'Sign-up failed',
+					});
+				}
 				if (data.length > 0) {
 					return res
 						.status(409)
 						.json({ message: 'E-mail address already exists' });
 				} else {
 					connection.query(query, values, (err, data) => {
-            if (err) {
-              return res.status(401).json({
-                message: 'Sign-up failed',
-              });
-            }
+						if (err) {
+							return res.status(401).json({
+								message: 'Sign-up failed',
+							});
+						}
 						console.log('Sign-up successful!', data);
 						res.status(200).json({ data });
 					});
@@ -77,66 +74,69 @@ router.post('/add', async function (req, res) {
 });
 
 router.post('/login', async function (req, res) {
-  try {
-    let userEmail = req.body.userEmail;
-    let password = req.body.password;
+	try {
+		let userEmail = req.body.userEmail;
+		let password = req.body.password;
 
-    let query = 'SELECT * FROM users WHERE userEmail = ?';
+		let query = 'SELECT * FROM users WHERE userEmail = ?';
 
-    connection.query(query, [userEmail], async (err, data) => {
-      if (err) {
-        console.log('err', err);
-        return res.status(500).json({ message: 'Login failed' });
-      }
+		connection.query(query, [userEmail], async (err, data) => {
+			if (err) {
+				console.log('err', err);
+				return res.status(500).json({ message: 'Login failed' });
+			}
 
-      if (data.length < 1) {
-        return res.status(404).json({ message: 'User does not exist' });
-      } else {
-        let storedPass = data[0].password
-        const comparePass = await bcrypt.compare(password, storedPass);
+			if (data.length < 1) {
+				return res.status(404).json({ message: 'User does not exist' });
+			} else {
+				let storedPass = data[0].password;
+				const comparePass = await bcrypt.compare(password, storedPass);
 
-        if (comparePass) {
-
-          console.log('Login successful!', data[0]);
-          res.status(200).json(data);
-        } else {
-          console.log('Incorrect E-mail or password');
-          res.status(409).json({ message: 'Incorrect E-mail or password' });
-        }
-      }
-    });
-  } catch (error) {
-    console.log('ERROR', error);
-    res.status(500).json({ error: 'Something went wrong, please try again' });
-  }
+				if (comparePass) {
+					console.log('Login successful!', data[0]);
+					res
+						.status(200)
+						.json({
+							name: data[0].userName,
+							email: data[0].userEmail,
+							id: data[0].userId,
+						});
+				} else {
+					console.log('Incorrect E-mail or password');
+					res.status(401).json({ message: 'Incorrect E-mail or password' });
+				}
+			}
+		});
+	} catch (error) {
+		console.log('ERROR', error);
+		res.status(500).json({ error: 'Something went wrong, please try again' });
+	}
 });
 
 router.put('/change/:userId', async function (req, res) {
-  try {
-    const cryptedPass = await bcrypt.hash(req.body.password, 10);
+	try {
+		const cryptedPass = await bcrypt.hash(req.body.password, 10);
 
-    let userId = req.params.userId;
-    let userName = req.body.userName;
-    let userEmail = req.body.userEmail
+		let userId = req.params.userId;
+		let userName = req.body.userName;
+		let userEmail = req.body.userEmail;
 		let password = cryptedPass;
 
-    let query = 'UPDATE users SET userName = ?, userEmail = ?, password = ? WHERE userId = ?';
-    let values = [userName, userEmail, password, userId]
-    connection.query(query, values, async (err, data) => {
-      if (err) {
-        console.log('err', err);
-        return res.status(401).json({ message: 'Error' });
-      }
-          console.log(data);
-          res.status(200).json({ message: 'Information updated successfully' });
-        
-      
-    });
-  } catch (error) {
-    console.log('ERROR', error);
-    res.status(500).json({ error: 'Something went wrong, please try again' });
-  }
+		let query =
+			'UPDATE users SET userName = ?, userEmail = ?, password = ? WHERE userId = ?';
+		let values = [userName, userEmail, password, userId];
+		connection.query(query, values, async (err, data) => {
+			if (err) {
+				console.log('err', err);
+				return res.status(401).json({ message: 'Error' });
+			}
+			console.log(data);
+			res.status(200).json({ message: 'Information updated successfully' });
+		});
+	} catch (error) {
+		console.log('ERROR', error);
+		res.status(500).json({ error: 'Something went wrong, please try again' });
+	}
 });
-
 
 module.exports = router;
