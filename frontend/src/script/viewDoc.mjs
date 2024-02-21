@@ -2,7 +2,7 @@ import createElement from "../lib/createElement.mjs";
 import myDocuments from "./myDocuments.js";
 import getEditDocument from './editDocument.js';
 
-export default function getViewDoc(viewDocBtn) {
+export default function getViewDoc(viewDocBtn, formatCreateDate, formatUpdateDate) {
         // let docId = editDocBtn.id
         let userId = {
                 userId: localStorage.getItem('loggedInUser')
@@ -45,7 +45,23 @@ export default function getViewDoc(viewDocBtn) {
                 );
                 textContent.innerHTML = doc.data[0].documentBody
                 docEditorContainer.appendChild(textContent);
-            
+                let docCreationDate = createElement(
+                    'p',
+                    `docCreationDate${doc.createdAt}`,
+                    'docCreationDate',
+                    `Creation: ${formatCreateDate}`
+                );
+                docEditorContainer.appendChild(docCreationDate);
+    
+                if (formatCreateDate !== formatUpdateDate) {
+                    let docUpdateDate = createElement(
+                        'p',
+                        `docBody${formatUpdateDate}`,
+                        'docCreationDate',
+                        `Updated: ${formatUpdateDate}`
+                    );
+                    docEditorContainer.appendChild(docUpdateDate);
+                }
                 let editDocBtn = createElement(
                     'button',
                     `${viewDocBtn.id}`,

@@ -2,6 +2,8 @@ let mainContainer = document.getElementById('mainContainer');
 import createElement from '../lib/createElement.mjs';
 import getEditDocument from './editDocument.js';
 import getViewDoc from './viewDoc.mjs';
+import errorMsg from "../lib/errorMsg.mjs";
+import deleteDoc from './deleteDoc.mjs';
 
 export default function myDocuments() {
     mainContainer.innerText = '';
@@ -11,8 +13,8 @@ export default function myDocuments() {
     })
     .then((res) => {
         if (res.status !== 200) {
-            categoryMessage.innerText = 'No documents yet';
-            categoryFiter.appendChild(categoryMessage);
+            errorMsg(mainContainer, 'No documents found, create a document to view') 
+
 
             throw new Error('You have no existing documents');
         }
@@ -56,7 +58,7 @@ export default function myDocuments() {
                 docBody.innerHTML = doc.documentBody || '';
             }
             
-            docBody.style.fontSize = '10px';
+            docBody.style.fontSize = '9px';
             docArticle.appendChild(docBody);
 
             let docCreationDate = createElement(
@@ -93,10 +95,20 @@ export default function myDocuments() {
             );
             docArticle.appendChild(editDocBtn);
 
-            viewDocBtn.addEventListener('click', () => getViewDoc(viewDocBtn))
+            let deleteDocBtn = createElement(
+                'button',
+                `${doc.documentId}`,
+                'deleteDocBtn',
+                'Delete document'
+            );
+            docArticle.appendChild(deleteDocBtn);
+
+            viewDocBtn.addEventListener('click', () => getViewDoc(viewDocBtn, formatCreateDate, formatUpdateDate))
             
 
             editDocBtn.addEventListener('click', () => getEditDocument(editDocBtn));
+
+            deleteDocBtn.addEventListener('click', () => deleteDoc(deleteDocBtn));
 
         });
     })
