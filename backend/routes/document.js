@@ -5,7 +5,7 @@ const connection = require('../lib/connect.js');
 router.get('/all/:userId', async function (req, res) {
 	try {
 		let userId = req.params.userId;
-		let query = 'SELECT * FROM documents WHERE userId = ?';
+		let query = 'SELECT * FROM documents WHERE userId = ? AND isDeleted = 0';
 		// values = [userId];
 
 		connection.query(query, [userId], async (err, data) => {

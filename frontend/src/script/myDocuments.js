@@ -1,98 +1,106 @@
 let mainContainer = document.getElementById('mainContainer');
 import createElement from '../lib/createElement.mjs';
-import getViewDocument from './editDocument.js';
+import getEditDocument from './editDocument.js';
+import getViewDoc from './viewDoc.mjs';
 
 export default function myDocuments() {
-    mainContainer.innerText = ''
-	fetch(
-		`http://localhost:3000/api/document/all/${localStorage.getItem(
-			'loggedInUser'
-		)}`,
-		{
-			method: 'GET',
-		}
-	)
-		.then((res) => {
-			if (res.status !== 200) {
-				categoryMessage.innerText = 'No documents yet';
-				categoryFiter.appendChild(categoryMessage);
+    mainContainer.innerText = '';
 
-				throw new Error('You have no existing documents');
-			}
-			return res.json();
-		})
-		.then((userDocs) => {
-			userDocs.forEach((doc) => {
+    fetch(`http://localhost:3000/api/document/all/${localStorage.getItem('loggedInUser')}`, {
+        method: 'GET',
+    })
+    .then((res) => {
+        if (res.status !== 200) {
+            categoryMessage.innerText = 'No documents yet';
+            categoryFiter.appendChild(categoryMessage);
 
-                let creationDate = doc.createdAt; 
-                let formatCreateDate = new Date(creationDate).toLocaleString();
-                let updateDate = doc.lastUpdated; 
-                let formatUpdateDate = new Date(updateDate).toLocaleString();
+            throw new Error('You have no existing documents');
+        }
+        return res.json();
+    })
+    .then((userDocs) => {
+        userDocs.forEach((doc) => {
+            let creationDate = doc.createdAt; 
+            let formatCreateDate = new Date(creationDate).toLocaleString();
+            let updateDate = doc.lastUpdated; 
+            let formatUpdateDate = new Date(updateDate).toLocaleString();
 
-				let docArticle = createElement(
-					'article',
-					`docArticle${doc.documentId}`,
-					'docArticle',
-					``
-				);
-				mainContainer.appendChild(docArticle);
+            let docArticle = createElement(
+                'article',
+                `docArticle${doc.documentId}`,
+                'docArticle',
+                ''
+            );
+            mainContainer.appendChild(docArticle);
 
-				let docTitle = createElement(
-					'h3',
-					`docTitle${doc.documentId}`,
-					'docTitle',
-					`${doc.title}`
-				);
-				docArticle.appendChild(docTitle);
+            let docTitle = createElement(
+                'h3',
+                `docTitle${doc.documentId}`,
+                'docTitle',
+                `${doc.title}`
+            );
+            docArticle.appendChild(docTitle);
 
-				let docBody = createElement(
-					'p',
-					`docBody${doc.documentId}`,
-					'docBody',
-					``
-				);
-				docBody.innerHTML = doc.documentBody;
-				docArticle.appendChild(docBody);
-                
-				let docCreationDate = createElement(
-					'p',
-					`docCreationDate${doc.createdAt}`,
-					'docCreationDate',
-					`Creation: ${formatCreateDate}`
-				);
-				docArticle.appendChild(docCreationDate);
+            let docBody = createElement(
+                'p',
+                `docBody${doc.documentId}`,
+                'docBody',
+                ''
+            );
+            
+            const textLimit = 402; 
+            if (doc.documentBody && doc.documentBody.length > textLimit) {
+                const truncatedContent = doc.documentBody.substring(0, textLimit) + '...';
+                docBody.innerHTML = truncatedContent;
+            } else {
+                docBody.innerHTML = doc.documentBody || '';
+            }
+            
+            docBody.style.fontSize = '10px';
+            docArticle.appendChild(docBody);
 
-                if (formatCreateDate !== formatUpdateDate) {
+            let docCreationDate = createElement(
+                'p',
+                `docCreationDate${doc.createdAt}`,
+                'docCreationDate',
+                `Creation: ${formatCreateDate}`
+            );
+            docArticle.appendChild(docCreationDate);
+
+            if (formatCreateDate !== formatUpdateDate) {
                 let docUpdateDate = createElement(
-					'p',
-					`docBody${formatUpdateDate}`,
-					'docCreationDate',
-					`Updated: ${formatUpdateDate}`
-				);
-				docArticle.appendChild(docUpdateDate);
+                    'p',
+                    `docBody${formatUpdateDate}`,
+                    'docCreationDate',
+                    `Updated: ${formatUpdateDate}`
+                );
+                docArticle.appendChild(docUpdateDate);
             }
 
-				let viewDocBtn = createElement(
-					'button',
-					`${doc.documentId}`,
-					'viewDocBtn',
-					'View document'
-				);
-				docArticle.appendChild(viewDocBtn);
+            let viewDocBtn = createElement(
+                'button',
+                `${doc.documentId}`,
+                'viewDocBtn',
+                'View document'
+            );
+            docArticle.appendChild(viewDocBtn);
 
-				let editDocBtn = createElement(
-					'button',
-					`${doc.documentId}`,
-					'editDocBtn',
-					'Edit document'
-				);
-				docArticle.appendChild(editDocBtn);
+            let editDocBtn = createElement(
+                'button',
+                `${doc.documentId}`,
+                'editDocBtn',
+                'Edit document'
+            );
+            docArticle.appendChild(editDocBtn);
 
-				viewDocBtn.addEventListener('click', () => {
-					console.log(viewDocBtn.id);
-				});
+            viewDocBtn.addEventListener('click', () => getViewDoc(viewDocBtn))
+            
 
-				editDocBtn.addEventListener('click', () => getViewDocument(editDocBtn));
-			});
-		});
+            editDocBtn.addEventListener('click', () => getEditDocument(editDocBtn));
+
+        });
+    })
+    .catch((error) => {
+        console.error('Error fetching or processing documents:', error);
+    });
 }

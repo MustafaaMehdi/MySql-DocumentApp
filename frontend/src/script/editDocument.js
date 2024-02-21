@@ -1,7 +1,7 @@
 import createElement from "../lib/createElement.mjs";
 import myDocuments from "./myDocuments.js";
 import updateDocument from "./updateDocument.mjs";
-export default function getViewDocument(editDocBtn) {
+export default function getEditDocument(editDocBtn) {
         // let docId = editDocBtn.id
         let userId = {
                 userId: localStorage.getItem('loggedInUser')

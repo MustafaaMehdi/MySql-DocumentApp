@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "froala-editor": "^4.1.4",
-    "tinymce": "^6.8.3"
+    "froala-editor": "^4.1.4"
   }
 }
