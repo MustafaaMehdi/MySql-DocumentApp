@@ -1,5 +1,6 @@
 // import FroalaEditor from '.../node_modules/froala-editor';
-import createElement from "./createElement.js";
+import createElement from "../lib/createElement.mjs";
+import myDocuments from "./myDocuments.js";
 import saveDocument from "./saveDocument.js";
 
 let mainContainer = document.getElementById('mainContainer');
@@ -68,10 +69,19 @@ export default function newDocument() {
         'button',
         'saveBtn',
         'saveBtn',
-        'SAVE'
+        'Save'
     );
-    
-    docEditorContainer.appendChild(saveBtn);
+
+    let cancelBtn = createElement(
+        'button',
+        'cancelBtn',
+        'cancelBtn',
+        'Cancel'
+    );
+
+    mainContainer.append(cancelBtn, saveBtn)
+
+    cancelBtn.addEventListener('click', myDocuments);
 
     saveBtn.addEventListener('click', () => saveDocument(documentBodyContent, documentTitle));
 }

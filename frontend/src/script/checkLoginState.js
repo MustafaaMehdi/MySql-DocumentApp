@@ -1,4 +1,4 @@
-import createElement from './createElement.js';
+import createElement from "../lib/createElement.mjs";
 import sideNavRender from './sideNavRender.js';
 import loginUser from './loginUser.js';
 import signUpUser from './signUpUser.js';

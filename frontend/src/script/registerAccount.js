@@ -1,4 +1,5 @@
-import createElement from "./createElement.js";
+import createElement from "../lib/createElement.mjs";
+import errorMsg from "../lib/errorMsg.mjs";
 
 export default function registerAccount(signUpNameInput, signUpEmailInput, signUpPasswordInput) {
     let sendUser = {
@@ -6,20 +7,9 @@ export default function registerAccount(signUpNameInput, signUpEmailInput, signU
 		userEmail: signUpEmailInput.value,
 		password: signUpPasswordInput.value
 	};
-    let checkError = document.getElementById('nameError')
-    if (checkError) {
-        checkError.remove()
-    }
-    const nameError = createElement(
-        'span',
-        `nameError`,
-        'nameError',
-        ``
-    );
-    console.log(signUpNameInput.value);
+
     if (signUpNameInput.value.trim() === '' || signUpEmailInput.value.trim() === ''|| signUpPasswordInput.value.trim() === '' ) {
-        nameError.innerText = 'Please fill in all the details'
-        loginContainer.appendChild(nameError)
+        errorMsg(loginContainer, 'Please fill in all the details') 
         return;
     }
 	fetch('http://localhost:3000/api/users/add', {
@@ -31,12 +21,10 @@ export default function registerAccount(signUpNameInput, signUpEmailInput, signU
 	})
 		.then((res) => {
             if (res.status === 409) {
-                nameError.innerText = 'E-mail address already in use, please reset password'
-                loginContainer.appendChild(nameError)
+                errorMsg(loginContainer, 'E-mail address already in use, please reset password if you have an account') 
                 return;
             } else if (res.status === 500) {
-                nameError.innerText = 'There was an error creating user, please try again'
-                loginContainer.appendChild(nameError)
+                errorMsg(loginContainer, 'There was an error creating user, please try again') 
                 return;
             }
             return res.json();

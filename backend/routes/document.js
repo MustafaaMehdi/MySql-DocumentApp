@@ -75,7 +75,7 @@ router.post('/getdoc/:documentId', async function (req, res) {
 			if (data.length < 1) {
 				return res.status(404).json({ message: 'Document not found' });
 			} else {
-				console.log('UserDocs', data[0].documentBody);
+				console.log('UserDocs', data[0].title);
 				res.status(200).json({data});
 			}
 		});
@@ -85,21 +85,21 @@ router.post('/getdoc/:documentId', async function (req, res) {
 	}
 });
 
-
 router.put('/update/:documentId', async function (req, res) {
 	try {
 		let documentId = req.params.documentId;
 		let title = req.body.title;
 		let documentBody = req.body.documentBody;
+		let userId = req.body.userId;
 		let query =
-			'UPDATE documents SET title = ?, documentBody = ? WHERE documentId = ?';
-		let values = [title, documentBody, documentId];
+			'UPDATE documents SET title = ?, documentBody = ?, lastUpdated = CURRENT_TIMESTAMP WHERE documentId = ? AND userId = ?';
+		let values = [title, documentBody, documentId, userId];
 		connection.query(query, values, async (err, data) => {
 			if (err) {
 				console.log('err', err);
 				return res.status(401).json({ message: 'Error' });
 			}
-			console.log(data);
+			console.log(data[0]);
 			res.status(200).json({ message: 'Document updated' });
 		});
 	} catch (error) {

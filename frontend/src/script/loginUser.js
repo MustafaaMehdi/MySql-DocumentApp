@@ -6,7 +6,10 @@ export default function loginUser() {
 		userEmail: emailInput.value,
 		password: passwordInput.value,
 	};
-
+    if (emailInput.value.trim() === '' || passwordInput.value.trim() === '') {
+        errorMsg(loginContainer, 'Please fill in your details') 
+        return;
+    }
 	fetch('http://localhost:3000/api/users/login', {
 		method: 'POST',
 		headers: {

@@ -1,5 +1,5 @@
 // import FroalaEditor from '.../node_modules/froala-editor';
-import createElement from './createElement.js';
+import createElement from '../lib/createElement.mjs';
 
 const reader = new FileReader()
 

@@ -1,5 +1,5 @@
 let navBar = document.getElementById('navBar');
-import createElement from "./createElement.js"
+import createElement from "../lib/createElement.mjs"
 import newDocument from "./newDocument.js";
 import myDocuments from "./myDocuments.js";
 export default function sideNavRender() {
@@ -70,8 +70,6 @@ export default function sideNavRender() {
     userSettingsContainer.append(userSettingsBtn, profileBtn)
 
     myDocumentsBtn.addEventListener('click', myDocuments)
-
-    
     
     createDocumentBtn.addEventListener('click', newDocument)
 }

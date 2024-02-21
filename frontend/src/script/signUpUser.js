@@ -1,4 +1,4 @@
-import createElement from "./createElement.js";
+import createElement from "../lib/createElement.mjs";
 import checkLoginState from "./checkLoginState.js";
 import registerAccount from "./registerAccount.js";
 
