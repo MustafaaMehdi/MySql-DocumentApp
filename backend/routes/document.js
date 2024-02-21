@@ -27,7 +27,38 @@ router.get('/all/:userId', async function (req, res) {
 	}
 });
 
-router.get('/:documentId', async function (req, res) {
+
+router.post('/add', function (req, res) {
+	console.log('post');
+	try {
+		let userId = req.body.userId;
+		let title = req.body.title;
+		let documentBody = req.body.documentBody;
+
+		connection.connect((err) => {
+			if (err) console.log('err', err);
+			let query =
+				'INSERT into documents (userId, title, documentBody) VALUES (?,?,?)';
+			let values = [userId, title, documentBody];
+
+			connection.query(query, values, (err, data) => {
+				console.log(err);
+				if (err) {
+					return res.status(401).json({
+						message: 'failed to save document1',
+					});
+				}
+				console.log('Successfully stored doc', data);
+				res.status(200).json({ data });
+			});
+		});
+	} catch (error) {
+		console.log('ERROR', error);
+		res.status(500).json({ error: 'something went wrong' });
+	}
+});
+
+router.post('/getdoc/:documentId', async function (req, res) {
 	try {
 		let documentId = req.params.documentId;
 		let userId = req.body.userId;
@@ -44,8 +75,8 @@ router.get('/:documentId', async function (req, res) {
 			if (data.length < 1) {
 				return res.status(404).json({ message: 'Document not found' });
 			} else {
-				console.log('UserDocs', data);
-				res.status(200).json(data);
+				console.log('UserDocs', data[0].documentBody);
+				res.status(200).json({data});
 			}
 		});
 	} catch (error) {
@@ -54,33 +85,6 @@ router.get('/:documentId', async function (req, res) {
 	}
 });
 
-router.post('/add', function (req, res) {
-	try {
-		let userId = req.body.userId;
-		let title = req.body.title;
-		let documentBody = req.body.documentBody;
-
-		connection.connect((err) => {
-			if (err) console.log('err', err);
-			let query =
-				'INSERT into documents (userId, title, documentBody) VALUES (?,?,?)';
-			let values = [userId, title, documentBody];
-
-			connection.query(query, values, (err, data) => {
-				if (err) {
-					return res.status(401).json({
-						message: 'failed to save document1',
-					});
-				}
-				console.log('Successfully stored doc', data);
-				res.status(200).json({ data });
-			});
-		});
-	} catch (error) {
-		console.log('ERROR', error);
-		res.status(500).json({ error: 'something went wrong' });
-	}
-});
 
 router.put('/update/:documentId', async function (req, res) {
 	try {

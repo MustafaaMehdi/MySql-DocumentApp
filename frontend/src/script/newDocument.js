@@ -1,10 +1,12 @@
 // import FroalaEditor from '.../node_modules/froala-editor';
 import createElement from "./createElement.js";
+import saveDocument from "./saveDocument.js";
 
 let mainContainer = document.getElementById('mainContainer');
 
 export default function newDocument() {
     mainContainer.innerText = '';
+    let documentBodyContent
 
     let docEditorContainer = createElement(
         'div',
@@ -13,6 +15,15 @@ export default function newDocument() {
         ''
     );
     mainContainer.appendChild(docEditorContainer);
+
+    let documentTitle = createElement(
+        'input',
+        'documentTitle',
+        'documentTitle',
+        ''
+    );
+    documentTitle.placeholder = 'Title'
+    docEditorContainer.appendChild(documentTitle);
 
     let textContent = createElement(
         'textarea',
@@ -28,10 +39,11 @@ export default function newDocument() {
             'undo', 'redo', '|',
             'bold', 'italic', 'underline', 'strikeThrough', '|',
             'fontFamily', 'fontSize', '|',  
-            'color', 'background', '|',   
+            'textColor', 'backgroundColor', '|',   
             'formatBlock', 'align', 'insertOrderedList', 'insertUnorderedList', '|',
-            'html'
+            'html', '|', 'print'
         ],
+        quickInsertTags: ['insertOrderedList', 'fontFamily' ],
         fontFamily: {
             'Arial,Helvetica,sans-serif': 'Arial',
             'Georgia,serif': 'Georgia',
@@ -46,8 +58,8 @@ export default function newDocument() {
         colorsBackground: ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'],  
         events: {
             'contentChanged': function () {
-                const textCons = editor.html.get();
-                console.log(textCons);
+                documentBodyContent = editor.html.get();
+                console.log(documentBodyContent);
             }
         }
     });
@@ -61,8 +73,6 @@ export default function newDocument() {
     
     docEditorContainer.appendChild(saveBtn);
 
-    saveBtn.addEventListener('click', () => {
-        const savedText = editor.html.get();
-        console.log(savedText);
-    });
+    saveBtn.addEventListener('click', () => saveDocument(documentBodyContent, documentTitle));
 }
+

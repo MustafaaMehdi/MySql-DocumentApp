@@ -39,11 +39,13 @@ export default function registerAccount(signUpNameInput, signUpEmailInput, signU
                 loginContainer.appendChild(nameError)
                 return;
             }
-
+            return res.json();
         })
 		.then((user) => {
             console.log(user);
-            if (user !== undefined && user !== null) {
+            if (user === undefined || user === null) {
+                return;
+            }
 			registerBtn.remove()
             const successMessage = createElement(
                 'span',
@@ -53,8 +55,8 @@ export default function registerAccount(signUpNameInput, signUpEmailInput, signU
             );
             loginContainer.appendChild(successMessage)
 
-                console.log('User is posted: ', user.name);
-            }
+                console.log('User is posted: ', user);
+            
 		})
         .catch(error => {
             console.error('error: ', error);

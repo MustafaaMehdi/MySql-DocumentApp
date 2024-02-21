@@ -61,8 +61,8 @@ router.post('/add', async function (req, res) {
 								message: 'Sign-up failed',
 							});
 						}
-						console.log('Sign-up successful!', data);
-						res.status(200).json(data);
+						console.log('Sign-up successful!', {userName});
+						res.status(200).json({userName});
 					});
 				}
 			});

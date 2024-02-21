@@ -70,6 +70,8 @@ export default function sideNavRender() {
     userSettingsContainer.append(userSettingsBtn, profileBtn)
 
     myDocumentsBtn.addEventListener('click', myDocuments)
+
+    
     
     createDocumentBtn.addEventListener('click', newDocument)
 }

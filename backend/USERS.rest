@@ -10,9 +10,9 @@ POST http://localhost:3000/api/users/add
 Content-Type: application/json
 
 {
-"userName": "My User",
-"userEmail": "My Email",
-"password": "My Password"
+"userName": "1My User",
+"userEmail": "1My Email",
+"password": "1My Password"
 }
 ###
 
@@ -21,8 +21,8 @@ POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-"userEmail": "My Email",
-"password": "My Password"
+"userEmail": "1My Email",
+"password": "1My Password"
 }
 ###
 
