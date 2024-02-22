@@ -2,6 +2,8 @@ let navBar = document.getElementById('navBar');
 import createElement from "../lib/createElement.mjs"
 import newDocument from "./newDocument.js";
 import myDocuments from "./myDocuments.js";
+import getUserProfile from "./getUserProfile.mjs";
+
 export default function sideNavRender() {
     let logoContainer = createElement(
         'div',
@@ -54,22 +56,24 @@ export default function sideNavRender() {
     );
     navBar.appendChild(userSettingsContainer)
 
-    let userSettingsBtn = createElement(
-        'button',
-        `userSettingsBtn`,
-        'userSettingsBtn',
-        `My settings`
-    );
+    // let userSettingsBtn = createElement(
+    //     'button',
+    //     `userSettingsBtn`,
+    //     'userSettingsBtn',
+    //     `Settings`
+    // );
 
     let profileBtn = createElement(
         'button',
         `userProfileBtn`,
         'userProfileBtn',
-        `My Profile`
+        `Profile`
     );
-    userSettingsContainer.append(userSettingsBtn, profileBtn)
+    userSettingsContainer.appendChild(profileBtn)
 
     myDocumentsBtn.addEventListener('click', myDocuments)
     
     createDocumentBtn.addEventListener('click', newDocument)
+
+    profileBtn.addEventListener('click', getUserProfile)
 }
