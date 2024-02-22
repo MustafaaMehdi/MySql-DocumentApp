@@ -37,10 +37,10 @@ Content-Type: application/json
 ###
 
 // Soft-delete specific document
-DELETE http://localhost:3000/api/document/delete/10
+DELETE http://localhost:3000/api/document/delete/42
 Content-Type: application/json
 
 {
-"userId": "2"
+"userId": "689b4cae-1c49-485c-86d1-71b03fc141c9"
 }
 ###

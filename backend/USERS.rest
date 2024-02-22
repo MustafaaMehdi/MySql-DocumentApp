@@ -5,6 +5,11 @@ GET http://localhost:3000/api/users
 
 ###
 
+// Get the logged in users details
+GET http://localhost:3000/api/users/profile/09518c10-2d15-45b5-8445-32bb2fced97d
+
+###
+
 // Add user
 POST http://localhost:3000/api/users/add
 Content-Type: application/json
@@ -26,6 +31,8 @@ Content-Type: application/json
 }
 ###
 
+
+
 // Change user details
 PUT http://localhost:3000/api/users/change/25311416524346115612312fadsfasd
 Content-Type: application/json
@@ -33,6 +40,16 @@ Content-Type: application/json
 {
 "userName": "MyChangedName",
 "userEmail": "MyChangedEmail",
-"password": "MyChangedPassword"
+"password": "NÄHEEEDUUU"
 }
 ###
+
+
+
+PATCH http://localhost:3000/api/users/editpass/25311416524346115612312fadsfasd
+Content-Type: application/json
+
+{
+"currentPassword": "NÄHEEEDUUU",
+"newPassword": ""
+}
