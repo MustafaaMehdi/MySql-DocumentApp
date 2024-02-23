@@ -1,3 +1,5 @@
+import myDocuments from "./myDocuments.js";
+
 export default function saveDocument(documentBodyContent, documentTitle) {
     let sendDoc = {
             
@@ -15,4 +17,5 @@ export default function saveDocument(documentBodyContent, documentTitle) {
 		})
         .then(res => res.json())
         .then(data => console.log(data))
+		myDocuments()
 }
