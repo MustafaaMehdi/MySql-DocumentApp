@@ -22,6 +22,7 @@ export default function changePassword(userProfileContainer) {
 		'currentPasswordInput',
 		''
 	);
+    currentPasswordInput.setAttribute('type', 'password')
 	currentPasswordLabel.appendChild(currentPasswordInput);
 	let newPasswordLabel = createElement(
 		'label',
@@ -35,6 +36,7 @@ export default function changePassword(userProfileContainer) {
 		'newPasswordInput',
 		''
 	);
+    newPasswordInput.setAttribute('type', 'password')
 	newPasswordLabel.appendChild(newPasswordInput);
 	let newPasswordLabel2 = createElement(
 		'label',
@@ -48,6 +50,7 @@ export default function changePassword(userProfileContainer) {
 		'newPasswordInput2',
 		''
 	);
+    newPasswordInput2.setAttribute('type', 'password')
 	newPasswordLabel2.appendChild(newPasswordInput2);
     
     let changePasswordBtn = createElement(

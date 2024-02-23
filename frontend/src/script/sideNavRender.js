@@ -63,13 +63,23 @@ export default function sideNavRender() {
     //     `Settings`
     // );
 
+    let profileImg = createElement(
+        'img',
+        `profileImg`,
+        'profileImg',
+        ``
+    );
+    profileImg.setAttribute('src', './assets/images/avatar.jpg')
+    profileImg.setAttribute('alt', 'logo of unidoc')
+    profileImg.setAttribute('width', '50')
+
     let profileBtn = createElement(
         'button',
         `userProfileBtn`,
         'userProfileBtn',
         `Profile`
     );
-    userSettingsContainer.appendChild(profileBtn)
+    userSettingsContainer.append(profileImg, profileBtn)
 
     myDocumentsBtn.addEventListener('click', myDocuments)
     

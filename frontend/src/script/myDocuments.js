@@ -108,7 +108,7 @@ export default function myDocuments() {
 
             editDocBtn.addEventListener('click', () => getEditDocument(editDocBtn));
 
-            deleteDocBtn.addEventListener('click', () => deleteDoc(deleteDocBtn, docArticle, doc));
+            deleteDocBtn.addEventListener('click', () => deleteDoc(docArticle, doc));
 
         });
     })
