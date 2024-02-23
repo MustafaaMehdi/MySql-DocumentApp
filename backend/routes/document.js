@@ -27,7 +27,6 @@ router.get('/all/:userId', async function (req, res) {
 	}
 });
 
-
 router.post('/add', function (req, res) {
 	console.log('post');
 	try {
@@ -76,7 +75,7 @@ router.post('/getdoc/:documentId', async function (req, res) {
 				return res.status(404).json({ message: 'Document not found' });
 			} else {
 				console.log('UserDocs', data[0].title);
-				res.status(200).json({data});
+				res.status(200).json({ data });
 			}
 		});
 	} catch (error) {
@@ -115,23 +114,41 @@ router.delete('/delete/:documentId', async function (req, res) {
 
 			let userId = req.body.userId;
 			let documentId = req.params.documentId;
-			let query =
-				'UPDATE documents SET isDeleted = 1 WHERE userId = ? AND documentId = ?';
-			let values = [userId, documentId];
+			let checkDoc =
+				'SELECT isDeleted FROM documents WHERE userId = ? AND documentId = ?';
+				let values = [userId, documentId];
 
-			connection.query(query, values, async (err, data) => {
-				console.log(err);
+
+			connection.query(checkDoc, values, async (err, data) => {
 				if (err) {
 					console.log('err', err);
-					return res.status(401).json({ message: 'Something went wrong1' });
+					return res.status(500).json({ message: 'Something went wrong' });
+				}
+				// let query 
+				let isDeleted = data[0].isDeleted;
+				if (isDeleted === 1) {
+					checkDoc =
+					'UPDATE documents SET isDeleted = 0 WHERE userId = ? AND documentId = ?';
+				} else if (isDeleted === 0) {
+					checkDoc =
+					'UPDATE documents SET isDeleted = 1 WHERE userId = ? AND documentId = ?';
 				}
 
-				if (data.length < 1) {
-					return res.status(404).json({ message: 'No user documents1' });
-				} else {
-					console.log('Document deleted', data);
-					res.status(200).json(data);
-				}
+
+				connection.query(checkDoc, values, async (err, data) => {
+					console.log(err);
+					if (err) {
+						console.log('err', err);
+						return res.status(401).json({ message: 'Something went wrong1' });
+					}
+
+					if (data.length < 1) {
+						return res.status(404).json({ message: 'No user documents1' });
+					} else {
+						console.log('Document deleted', data);
+						res.status(200).json(data);
+					}
+				});
 			});
 		});
 	} catch (error) {
