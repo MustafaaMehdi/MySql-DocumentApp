@@ -93,7 +93,7 @@ export default function getEditDocument(editDocBtn) {
                     'Cancel'
                 );
                 
-                docEditorContainer.append(cancelBtn, updateBtn);
+                docEditorContainer.append(updateBtn, cancelBtn);
 
                 cancelBtn.addEventListener('click', myDocuments);
             

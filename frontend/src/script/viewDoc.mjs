@@ -76,7 +76,7 @@ export default function getViewDoc(viewDocBtn, formatCreateDate, formatUpdateDat
                 );
                 
                 
-                docEditorContainer.append(cancelBtn, editDocBtn);
+                docEditorContainer.append(editDocBtn, cancelBtn);
 
                 cancelBtn.addEventListener('click', myDocuments);
             

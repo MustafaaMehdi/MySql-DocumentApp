@@ -8,6 +8,26 @@ body {
 
         .mainContainer {
             
+            .docEditorContainer {
+                display: flex;
+                flex-direction: column;
+
+                .textContent {
+                    display: flex;
+                    flex-direction: column;
+                    max-width: 100%;
+                    max-height: 50vh;
+                    word-wrap: break-word; 
+                    background-color: #fff;
+                    border-radius: 20px;
+                    overflow: auto;
+                }
+
+                button {
+                    border: none;
+                    
+                }
+            }
             .docArticleContainer {
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
@@ -16,21 +36,112 @@ body {
                 position: relative;
 
                 .docArticle {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
                     width: 100%;
+                    // height: 200px;
                     grid-column: span 2;
                     border-radius: 20px;
                     margin-bottom: 1rem;
-                    // border: 2px solid #12171e;
+                    border: 1px solid #12171e;
                     background-color:#fff;
+                    .docTitle {
+                        text-align: center;
+                    }
+
+                    .docCreationDate {
+                        background-color: #9fc7ff;
+                        max-width: 45%;
+                        border-radius: 0 10px 10px 0;
+                        font-size: 0.8rem;
+                        // text-align: center;
+                        margin-bottom: 5px;
+                    }
+                    .docBtnContainer {
+                        display: flex;
+                        justify-content: space-evenly;
+                        border-top: 1px solid black;
+                        // border-radius: 0 0 20px 20px;
+                        .viewDocBtn, .editDocBtn, .deleteDocBtn {
+                            width: 100%;
+                            height: 50px;
+                            border: none;
+                            cursor: pointer;
+                        }
+                        .viewDocBtn {
+                            background-color: #bdddec;
+                                                        // background-color: #ece19e;
+                           border-right: 1px solid black;
+                           border-left: 1px solid black;
+                        }
+                        .editDocBtn {
+                            // background-color: #ece19e;
+
+                            border-radius: 0 0 0 19px;
+
+                        }
+
+                        .deleteDocBtn {
+                            // background-color: #db907d;
+                            border-radius: 0 0 19px 0 ;
+                        }
+
+                        .viewDocBtn {
+                            background-color: #bdddec;
+                                                        // background-color: #ece19e;
+                           border-right: 1px solid black;
+                           border-left: 1px solid black;
+                        }
+                        .editDocBtn:hover {
+                            background-color: #ece19e;
+                        }
+
+                        .viewDocBtn:hover {
+                            background-color: #123b4e;
+                            color: #fff;
+
+                        }
+
+                        .deleteDocBtn:hover {
+                            background-color: #db907d;
+                            border-radius: 0 0 19px 0 ;
+                        }
+
+
+                    }
                     .docBody {
                         display: flex;
                         flex-direction: column;
-                        contain: content;
-                        max-width: 100px;
+                        max-width: 70%;
+                        word-wrap: break-word; 
+                        background-color: #fff;
+                        margin: 0 0 0 50px;
+                        
                         p span {
                             font-size: 0.5rem !important;
+                            align-items: center;
                         }
                     }
+                }
+            }
+
+            .userProfileContainer {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                height: 200px;
+                background-color:#6c7c83;
+                border-radius: 20px;
+                color: #000000;
+                align-items: center;
+                .changePasswordBtn, .changeNameBtn, .updateProfileBtn, .cancelBtn {
+                    align-items: center;
+                    width: 100px;
+                    border: none;
+                    margin-bottom: 5px;
+                    margin-left: 10px;
+                    border-radius: 20px;
                 }
             }
         }
@@ -106,7 +217,7 @@ body {
     .createDocumentBtn:hover, .userProfileBtn:hover, .myDocumentsBtn:hover {
         background-color: #323f4e;
         border-radius: 0.6rem;
-        height: 100px;
+        height: 64px;
         transition: all 0.5s ease-in-out;
         cursor: pointer;
     }
@@ -127,9 +238,8 @@ body {
             width: 50%;
         }
         .profileName {
-            opacity: 0;
-            font-weight: bold;
-            display: flex;
+
+            display: none;
         }
         .userProfileBtn {
             // margin-left: 1rem;
@@ -183,7 +293,7 @@ body {
                 // font-size: 2rem;
                 position: absolute;
                 left: 150px;
-                top: 28%;
+                top: 25%;
                 background-color: #4c4c58;
                 width: 120%;
                 height: 45px;
@@ -207,7 +317,15 @@ body {
         width: 7.9rem;
         font-size: 2rem;
         height: 3rem;
+        cursor: pointer;
     }
+
+    .logoutBtn:hover {
+
+        background-color: rgb(110, 16, 16);
+
+    }
+
 
 
 
@@ -230,17 +348,17 @@ body {
 }
 
 .navBar.openMenu .profileName {
-    opacity: 1;
+    display: flex;
     padding-left: 70px;
     font-size: 1.5rem;
     margin-top: 0;
     transition: all 0.2s ease-in-out;
-
+    font-family: $primaryFont;
 }
 
 .navBar.openMenu .btnTitle {
-    display: block;
-    font-size: 2rem;
+    display: flex;
+    font-size: 1rem;
     margin-top: 10px;
 }
 .navBar.openMenu .myDocumentsBtn:hover .toolTip {
@@ -253,6 +371,18 @@ body {
 
 .navBar.openMenu .createDocumentBtn:hover .createDocumentBtnTip {
     display: none;
+}
+
+.navBar.openMenu .createDocumentBtn:hover  {
+    height: 80px;
+}
+
+.navBar.openMenu .myDocumentsBtn:hover  {
+    height: 80px;
+}
+
+.navBar.openMenu .userProfileBtn:hover  {
+    height: 80px;
 }
 
 .navBar.openMenu .userProfileBtn {

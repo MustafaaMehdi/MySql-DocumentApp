@@ -125,7 +125,6 @@ router.post('/login', async function (req, res) {
 				const comparePass = await bcrypt.compare(password, storedPass);
 
 				if (comparePass) {
-					console.log('Login successful!', data[0]);
 					res
 						.status(200)
 						.json({
@@ -157,7 +156,6 @@ router.patch('/updateprofile/:userId', async function (req, res) {
 				console.log('err', err);
 				return res.status(401).json({ message: 'Error' });
 			}
-			console.log(data);
 			res.status(200).json({ message: 'Information updated successfully' });
 		});
 	} catch (error) {

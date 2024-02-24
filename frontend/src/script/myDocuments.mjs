@@ -87,29 +87,35 @@ export default function myDocuments() {
                 docArticle.appendChild(docUpdateDate);
             }
 
+            let docBtnContainer = createElement(
+                'div',
+                `docBtnContainer${doc.createdAt}`,
+                'docBtnContainer',
+                ``
+            );
+            docArticle.appendChild(docBtnContainer);
+
             let viewDocBtn = createElement(
                 'button',
                 `${doc.documentId}`,
                 'viewDocBtn',
-                'View document'
+                'View'
             );
-            docArticle.appendChild(viewDocBtn);
 
             let editDocBtn = createElement(
                 'button',
                 `${doc.documentId}`,
                 'editDocBtn',
-                'Edit document'
+                'Edit'
             );
-            docArticle.appendChild(editDocBtn);
 
             let deleteDocBtn = createElement(
                 'button',
                 `${doc.documentId}`,
                 'deleteDocBtn',
-                'Delete document'
+                'Delete'
             );
-            docArticle.appendChild(deleteDocBtn);
+            docBtnContainer.append(editDocBtn, viewDocBtn, deleteDocBtn);
 
             viewDocBtn.addEventListener('click', () => getViewDoc(viewDocBtn, formatCreateDate, formatUpdateDate))
             
