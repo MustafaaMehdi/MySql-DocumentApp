@@ -77,6 +77,7 @@ export default function getEditDocument(editDocBtn) {
                         }
                     }
                 });
+                console.log(documentBodyContent);
             
                 let updateBtn = createElement(
                     'button',
@@ -84,6 +85,7 @@ export default function getEditDocument(editDocBtn) {
                     'updateBtn',
                     'Save changes'
                 );
+                // updateBtn.setAttribute('disabled', '')
                 let cancelBtn = createElement(
                     'button',
                     'cancelBtn',

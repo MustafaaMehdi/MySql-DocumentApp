@@ -1,13 +1,46 @@
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding-left: 150px;
-    background-color: #46566a;
+    background-color: #fff;
+
     .uniDoc {
         transition: all 0.2s ease-in-out;
+
+        .mainContainer {
+            
+            .docArticleContainer {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
+                margin: 2rem;
+                position: relative;
+
+                .docArticle {
+                    width: 100%;
+                    grid-column: span 2;
+                    border-radius: 5px;
+                    margin-bottom: 1rem;
+
+                    .docBody {
+                        display: flex;
+                        flex-direction: column;
+                        contain: content;
+                        max-width: 100px;
+                        p span {
+                            font-size: 0.5rem !important;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
+.btnTitle, .toolTip, .profileBtnTip, .createDocumentBtnTip, .uniDoc  {
+    font-family: $primaryFont;
+    font-size: 1rem;
+    justify-content: center;
+}
 
 .navBar {
     position: absolute;
@@ -102,15 +135,17 @@ body {
         }
 
         .userProfileBtn:hover .profileBtnTip  {
-            font-size: 2rem;
             position: absolute;
             left: 120%;
-            top: 14.5%;
-            background-color: #12171e;
+            top: 160px;
+            background-color: #4c4c58;
             width: 130%;
             height:45px;
+            padding-top: 30px;
             border-radius: 20px;
+            border: 5px solid #12171e;
             display: block;
+            opacity: 0.8;
         }
     }
 
@@ -130,26 +165,32 @@ body {
             // }
             
             .myDocumentsBtn:hover .toolTip  {
-                font-size: 2rem;
+                // font-size: 2rem;
                 position: absolute;
                 left: 120%;
-                top: 33.3%;
-                background-color: #12171e;
+                top: 35.3%;
+                background-color: #4c4c58;
                 width: 120%;
-                height: 80px;
+                height: 50px;
+                padding-top: 30px;
                 border-radius: 20px;
+                border: 5px solid #12171e;
                 display: block;
+                opacity: 0.8;
             }
             .createDocumentBtn:hover .createDocumentBtnTip  {
-                font-size: 2rem;
+                // font-size: 2rem;
                 position: absolute;
-                left: 120%;
-                top: 23.5%;
-                background-color: #12171e;
+                left: 150px;
+                top: 28%;
+                background-color: #4c4c58;
                 width: 120%;
-                height: 80px;
+                height: 45px;
+                padding-top: 30px;
                 border-radius: 20px;
+                border: 5px solid #12171e;
                 display: block;
+                opacity: 0.8;
             }
     }
 
@@ -172,7 +213,6 @@ body {
 }
 .toolTip, .createDocumentBtnTip, .profileBtnTip {
     display: none;
-    font-size: 2rem;
 }
 
 .btnTitle {

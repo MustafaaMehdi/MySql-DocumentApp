@@ -10,13 +10,22 @@ export default function updateDocument(updateBtn, documentBodyContent, documentT
 
     let updateDoc = {
         title: docTitle,
-        documentBody: docBody,
+        documentBody: documentBodyContent,
         userId: userID
     }
     if (!docTitle) {
         errorMsg(mainContainer, 'Please input title') 
         return;
     } 
+
+
+    if (docBody === undefined || docBody === null) {
+        errorMsg(mainContainer, 'No changes were made, make sure to update document before saving') 
+        return;
+    }
+
+
+ 
     fetch(`http://localhost:3000/api/document/update/${updateBtn.id}`, {
         method: 'PUT',
         headers: {

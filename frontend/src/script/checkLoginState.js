@@ -2,6 +2,7 @@ import createElement from "../lib/createElement.mjs";
 import sideNavRender from './sideNavRender.js';
 import loginUser from './loginUser.js';
 import signUpUser from './signUpUser.js';
+import myDocuments from "./myDocuments.js";
 
 const navBar = document.getElementById('navBar');
 const mainContainer = document.getElementById('mainContainer');
@@ -13,6 +14,7 @@ export default function checkLoginState() {
 		console.log('logged in');
 
 		sideNavRender();
+		myDocuments()
 	} else {
         mainContainer.innerText = '';
         navBar.innerText = '';

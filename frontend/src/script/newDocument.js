@@ -17,6 +17,14 @@ export default function newDocument() {
     );
     mainContainer.appendChild(docEditorContainer);
 
+    let createDocHeader = createElement(
+        'h3',
+        'createDocHeader',
+        'createDocHeader',
+        'Create new document'
+    );
+    mainContainer.appendChild(docEditorContainer);
+
     let documentTitle = createElement(
         'input',
         'documentTitle',
@@ -24,7 +32,7 @@ export default function newDocument() {
         ''
     );
     documentTitle.placeholder = 'Title'
-    docEditorContainer.appendChild(documentTitle);
+    docEditorContainer.append(createDocHeader, documentTitle);
 
     let textContent = createElement(
         'textarea',

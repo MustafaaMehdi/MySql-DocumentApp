@@ -7,6 +7,13 @@ import deleteDoc from './deleteDoc.mjs';
 
 export default function myDocuments() {
     mainContainer.innerText = '';
+    let docArticleContainer = createElement(
+        'article',
+        `docArticleContainer`,
+        'docArticleContainer',
+        ''
+    );
+    mainContainer.appendChild(docArticleContainer);
 
     fetch(`http://localhost:3000/api/document/all/${localStorage.getItem('loggedInUser')}`, {
         method: 'GET',
@@ -27,13 +34,15 @@ export default function myDocuments() {
             let updateDate = doc.lastUpdated; 
             let formatUpdateDate = new Date(updateDate).toLocaleString();
 
+
+
             let docArticle = createElement(
                 'article',
                 `docArticle${doc.documentId}`,
                 'docArticle',
                 ''
             );
-            mainContainer.appendChild(docArticle);
+            docArticleContainer.appendChild(docArticle);
 
             let docTitle = createElement(
                 'h3',
@@ -50,15 +59,16 @@ export default function myDocuments() {
                 ''
             );
             
-            const textLimit = 402; 
+            const textLimit = 200; 
             if (doc.documentBody && doc.documentBody.length > textLimit) {
-                const truncatedContent = doc.documentBody.substring(0, textLimit) + '...';
-                docBody.innerHTML = truncatedContent;
+                const minifiedContent = doc.documentBody.substring(0, textLimit) + '...';
+                docBody.innerHTML = minifiedContent;
             } else {
-                docBody.innerHTML = doc.documentBody || '';
+                docBody.innerHTML = doc.documentBody || 'Document is empty';
             }
             
-            docBody.style.fontSize = '9px';
+            
+            docBody.style.fontSize = '0.5rem';
             docArticle.appendChild(docBody);
 
             let docCreationDate = createElement(
