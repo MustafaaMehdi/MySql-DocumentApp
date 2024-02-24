@@ -2,7 +2,6 @@ import createElement from "../lib/createElement.mjs";
 import sideNavRender from './sideNavRender.js';
 import loginUser from './loginUser.js';
 import signUpUser from './signUpUser.js';
-import logoutUser from './logoutUser.js';
 
 const navBar = document.getElementById('navBar');
 const mainContainer = document.getElementById('mainContainer');
@@ -11,35 +10,9 @@ export default function checkLoginState() {
 	mainContainer.innerText = '';
 	navBar.innerText = '';
 	if (localStorage.getItem('loggedInUser')) {
-		//Is logged in
-
 		console.log('logged in');
 
 		sideNavRender();
-
-		// const loginUserPage = createElement(
-		//     'button',
-		//     `loginUserPage`,
-		//     'loginUserPage',
-		//     ``
-		// );
-		// mainContainer.appendChild(loginUserPage)
-
-		// const welcomeUserHeadin = document.createElement('h2')
-		// // getUserOrders()
-		// welcomeUserHeadin.innerText = `Welcome ${localStorage.getItem('loggedInUserName')}`
-		// loginUserPage.appendChild(welcomeUserHeadin)
-
-		const logoutBtn = createElement(
-			'button',
-			`logoutBtn`,
-			'logoutBtn',
-			`Sign out`
-		);
-
-		navBar.appendChild(logoutBtn);
-
-		logoutBtn.addEventListener('click', logoutUser);
 	} else {
         mainContainer.innerText = '';
         navBar.innerText = '';

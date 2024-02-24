@@ -1,11 +1,264 @@
 
-.navBar {
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-left: 150px;
+    background-color: #46566a;
+    .uniDoc {
+        transition: all 0.2s ease-in-out;
+    }
+}
 
+
+.navBar {
+    position: absolute;
+    padding: 0;
+    left:0;
+    bottom: 0rem;
+    height: 100vh;
+    width: 100px;
+    background-color: #12171e;
+    color: #fff;
+    padding: .4rem .8rem;
+    transition: all 0.5s ease;
+    z-index: 2;
+    padding-bottom: 0;
+    .menuBtn {
+        position: absolute;
+        top: 2rem;
+        right: -25%;
+        font-size: 3rem;
+        line-height: 50px;
+        transform: translateX(-20%);
+        cursor: pointer;
+        width: 50px;
+        background-color: #323f4e;
+        border-radius: 100%;
+    }
+
+    .logoContainer {
+        position: absolute;
+        bottom: 4rem;
+        left: 0.75rem;
+
+        .logoContainerImg {
+            width: 100px;
+        }
+        .logoText {
+            position: relative;
+            bottom: 0.3rem;
+            left: 0.7rem;
+            margin: 0;
+            font-size: 1.3rem;
+            background-clip: text;
+            background-size: 100%;
+        }
+    }
+    // .documentBtnContainer {
+    //     // position: relative;
+    //     top: 10%;
+    //     height: 30vh;
+    //     }
+
+    .createDocumentBtn, .userProfileBtn, .myDocumentsBtn {
+        // border-radius: 100%;
+        border: none;
+        height: 4rem;
+        font-size: 3rem;
+        width: 100%;
+        background-color: #12171e;
+        color: #fff;
+        padding: 0;
+    }
+    .createDocumentBtn:hover, .userProfileBtn:hover, .myDocumentsBtn:hover {
+        background-color: #323f4e;
+        border-radius: 0.6rem;
+        height: 100px;
+        transition: all 0.5s ease-in-out;
+        cursor: pointer;
+    }
+
+    // .createDocumentBtn, ., .myDocumentsBtn {
+    //     border-radius: 100%;
+    //     border: none;
+    // }
     .userSettingsContainer {
+        height: 20vh;
+        margin-left: 0;
+        
 
         .profileImg {
             border-radius: 100%;
-            border: 1px solid rgb(205, 178, 231);
+            margin-top: 4rem;
+            margin-left: 1.5rem;
+            width: 50%;
+        }
+        .profileName {
+            opacity: 0;
+            font-weight: bold;
+            display: flex;
+        }
+        .userProfileBtn {
+            // margin-left: 1rem;
+        }
+
+        .userProfileBtn:hover .profileBtnTip  {
+            font-size: 2rem;
+            position: absolute;
+            left: 120%;
+            top: 14.5%;
+            background-color: #12171e;
+            width: 130%;
+            height:45px;
+            border-radius: 20px;
+            display: block;
         }
     }
+
+.documentBtnContainer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 3rem;
+            height: 30vh;
+            width: 100%;
+            // margin-left: 1rem;
+
+            // .createDocumentBtn, .myDocumentsBtn {
+            //     height: 4rem;
+            //     font-size: 3rem;
+            //     width: 4rem;
+            // }
+            
+            .myDocumentsBtn:hover .toolTip  {
+                font-size: 2rem;
+                position: absolute;
+                left: 120%;
+                top: 33.3%;
+                background-color: #12171e;
+                width: 120%;
+                height: 80px;
+                border-radius: 20px;
+                display: block;
+            }
+            .createDocumentBtn:hover .createDocumentBtnTip  {
+                font-size: 2rem;
+                position: absolute;
+                left: 120%;
+                top: 23.5%;
+                background-color: #12171e;
+                width: 120%;
+                height: 80px;
+                border-radius: 20px;
+                display: block;
+            }
+    }
+
+
+
+    .logoutBtn {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border: none;
+        background-color: rgb(185, 68, 68);
+        color: white;
+        width: 7.9rem;
+        font-size: 2rem;
+        height: 3rem;
+    }
+
+
+
+}
+.toolTip, .createDocumentBtnTip, .profileBtnTip {
+    display: none;
+    font-size: 2rem;
+}
+
+.btnTitle {
+    display: none;
+}
+
+.navBar.openMenu .profileImg {
+    width: 70%;
+    padding: 20px;
+}
+
+.navBar.openMenu .documentBtnContainer {
+    height: 70vh;
+}
+
+.navBar.openMenu .profileName {
+    opacity: 1;
+    padding-left: 70px;
+    font-size: 1.5rem;
+    margin-top: 0;
+    transition: all 0.2s ease-in-out;
+
+}
+
+.navBar.openMenu .btnTitle {
+    display: block;
+    font-size: 2rem;
+    margin-top: 10px;
+}
+.navBar.openMenu .myDocumentsBtn:hover .toolTip {
+    display: none;
+}
+
+.navBar.openMenu .userSettingsContainer .userProfileBtn:hover .profileBtnTip {
+    display: none;
+}
+
+.navBar.openMenu .createDocumentBtn:hover .createDocumentBtnTip {
+    display: none;
+}
+
+.navBar.openMenu .userProfileBtn {
+    transition: all 0.5s ease-in-out;
+}
+
+.navBar.openMenu .menuBtn {
+    right: -8%;
+    transition: all 0.5s ease-in-out;
+    transform: rotate(180deg);
+}
+
+.navBar.openMenu .logoContainer {
+    left: 30%;
+    transition: all 0.5s ease-in-out;
+}
+.navBar.openMenu .logoutBtn {
+    // left: 40%;
+    width: 100%;
+    transition: all 0.5s ease-in-out;
+}
+
+.navBar.openMenu ~ .uniDoc {
+    margin-left: 150px;
+    width: calc(100% - 250px);
+}
+
+.navBar.openMenu {
+    width: 250px;
+}
+
+.docEditorContainer .fr-toolbar {
+    background-color: #6c7c83;
+
+   div button svg path {
+    fill: #fff
+    }
+}
+
+.fr-box {
+
+    width: 1000px;
+    border-radius: 200px;
+
+}
+
+.fr-second-toolbar {
+    display: none;
+ 
 }
