@@ -200,51 +200,5 @@ router.patch('/editpass/:userId', async function (req, res) {
     }
 });
 
-// router.post('/add', async function (req, res) {
-// 	try {
-// 		let uuid = crypto.randomUUID();
-// 		const cryptedPass = await bcrypt.hash(req.body.password, 10);
-
-// 		let userId = uuid;
-// 		let userName = req.body.userName;
-// 		let userEmail = req.body.userEmail;
-// 		let password = cryptedPass;
-
-// 		connection.connect((err) => {
-// 			if (err) console.log('err', err);
-// 			let checkExisting = 'SELECT * FROM users WHERE userEmail = ?';
-// 			let query =
-// 				'INSERT into users (userId, userName, userEmail, password) VALUES (?,?,?,?)';
-
-// 			let values = [userId, userName, userEmail, password];
-
-// 			connection.query(checkExisting, [userEmail], (err, data) => {
-// 				if (err) {
-// 					return res.status(401).json({
-// 						message: 'Sign-up failed',
-// 					});
-// 				}
-// 				if (data.length > 0) {
-// 					return res
-// 						.status(409)
-// 						.json({ message: 'E-mail address already exists' });
-// 				} else {
-// 					connection.query(query, values, (err, data) => {
-// 						if (err) {
-// 							return res.status(401).json({
-// 								message: 'Sign-up failed',
-// 							});
-// 						}
-// 						console.log('Sign-up successful!', {userName});
-// 						res.status(200).json({userName});
-// 					});
-// 				}
-// 			});
-// 		});
-// 	} catch (error) {
-// 		console.log('ERROR', error);
-// 		res.status(500).json({ error: 'something went wrong' });
-// 	}
-// });
 
 module.exports = router;

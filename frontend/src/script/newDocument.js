@@ -62,8 +62,11 @@ export default function newDocument() {
             'Verdana,Geneva,sans-serif': 'Verdana'
         },
         fontSize: ['8', '10', '12', '14', '18', '24', '36'],
-        colorsStep: 7, 
-        colorsText: ['#000000', '#333333', '#666666', '#999999', '#CCCCCC', '#FFFFFF'],
+        colorsStep: 3, 
+        colorsText: [
+            '#15E67F', '#E3DE8C', '#D8A076', '#D83762', '#76B6D8', '#9D9CEA',
+            '#1C7A90', '#249CB8', '#4ABED9', '#FBD75B', '#FBE571', , "#C93414", 'REMOVE'
+          ],
         colorsBackground: ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'],  
         events: {
             'contentChanged': function () {

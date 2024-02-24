@@ -21,8 +21,6 @@ export default function myDocuments() {
     .then((res) => {
         if (res.status !== 200) {
             errorMsg(mainContainer, 'No documents found, create a document to view') 
-
-
             throw new Error('You have no existing documents');
         }
         return res.json();
