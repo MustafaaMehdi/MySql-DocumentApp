@@ -1,6 +1,6 @@
 let mainContainer = document.getElementById('mainContainer');
 import createElement from '../lib/createElement.mjs';
-import getEditDocument from './editDocument.js';
+import getEditDocument from './editDocument.mjs';
 import getViewDoc from './viewDoc.mjs';
 import errorMsg from "../lib/errorMsg.mjs";
 import deleteDoc from './deleteDoc.mjs';

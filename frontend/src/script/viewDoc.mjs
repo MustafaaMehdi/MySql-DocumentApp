@@ -1,6 +1,6 @@
 import createElement from "../lib/createElement.mjs";
-import myDocuments from "./myDocuments.js";
-import getEditDocument from './editDocument.js';
+import myDocuments from "./myDocuments.mjs";
+import getEditDocument from './editDocument.mjs';
 
 export default function getViewDoc(viewDocBtn, formatCreateDate, formatUpdateDate) {
         // let docId = editDocBtn.id

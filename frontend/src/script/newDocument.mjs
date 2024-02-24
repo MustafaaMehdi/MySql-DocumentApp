@@ -1,7 +1,7 @@
 // import FroalaEditor from '.../node_modules/froala-editor';
 import createElement from "../lib/createElement.mjs";
-import myDocuments from "./myDocuments.js";
-import saveDocument from "./saveDocument.js";
+import myDocuments from "./myDocuments.mjs";
+import saveDocument from "./saveDocument.mjs";
 
 let mainContainer = document.getElementById('mainContainer');
 

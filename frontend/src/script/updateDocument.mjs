@@ -1,5 +1,5 @@
 import errorMsg from "../lib/errorMsg.mjs";
-import myDocuments from "./myDocuments.js";
+import myDocuments from "./myDocuments.mjs";
 let mainContainer = document.getElementById('mainContainer');
 
 

@@ -1,8 +1,8 @@
 import createElement from "../lib/createElement.mjs";
-import sideNavRender from './sideNavRender.js';
-import loginUser from './loginUser.js';
-import signUpUser from './signUpUser.js';
-import myDocuments from "./myDocuments.js";
+import sideNavRender from './sideNavRender.mjs';
+import loginUser from './loginUser.mjs';
+import signUpUser from './signUpUser.mjs';
+import myDocuments from "./myDocuments.mjs";
 
 const navBar = document.getElementById('navBar');
 const mainContainer = document.getElementById('mainContainer');

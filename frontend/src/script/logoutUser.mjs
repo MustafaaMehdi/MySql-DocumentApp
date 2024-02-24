@@ -1,4 +1,4 @@
-import checkLoginState from "./checkLoginState.js";
+import checkLoginState from "./checkLoginState.mjs";
 
 export default function logoutUser() {
     localStorage.clear();

@@ -1,9 +1,9 @@
 let navBar = document.getElementById('navBar');
 import createElement from "../lib/createElement.mjs"
-import newDocument from "./newDocument.js";
-import myDocuments from "./myDocuments.js";
+import newDocument from "./newDocument.mjs";
+import myDocuments from "./myDocuments.mjs";
 import getUserProfile from "./getUserProfile.mjs";
-import logoutUser from './logoutUser.js';
+import logoutUser from './logoutUser.mjs';
 
 export default function sideNavRender() {
 

@@ -1,4 +1,4 @@
-import myDocuments from "./myDocuments.js";
+import myDocuments from "./myDocuments.mjs";
 
 export default function saveDocument(documentBodyContent, documentTitle) {
     let sendDoc = {

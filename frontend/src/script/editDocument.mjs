@@ -1,5 +1,5 @@
 import createElement from "../lib/createElement.mjs";
-import myDocuments from "./myDocuments.js";
+import myDocuments from "./myDocuments.mjs";
 import updateDocument from "./updateDocument.mjs";
 export default function getEditDocument(editDocBtn) {
         // let docId = editDocBtn.id

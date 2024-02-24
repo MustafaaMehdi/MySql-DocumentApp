@@ -1,4 +1,4 @@
-import myDocuments from "./myDocuments.js";
+import myDocuments from "./myDocuments.mjs";
 import createElement from "../lib/createElement.mjs";
 import undoDelete from "./undoDelete.mjs";
 

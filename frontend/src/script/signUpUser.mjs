@@ -1,6 +1,6 @@
 import createElement from "../lib/createElement.mjs";
-import checkLoginState from "./checkLoginState.js";
-import registerAccount from "./registerAccount.js";
+import checkLoginState from "./checkLoginState.mjs";
+import registerAccount from "./registerAccount.mjs";
 
 export default function signUpUser() {
     loginContainer.innerText = ''

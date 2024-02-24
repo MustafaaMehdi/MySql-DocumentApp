@@ -1,6 +1,6 @@
 import { deleteMsg } from '../lib/errorMsg.mjs';
 import { deleteMethod } from './deleteDoc.mjs';
-import myDocuments from './myDocuments.js';
+import myDocuments from './myDocuments.mjs';
 
 let mainContainer = document.getElementById('mainContainer');
 import createElement from '../lib/createElement.mjs';
