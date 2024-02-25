@@ -20,7 +20,7 @@ export default function updateDocument(updateBtn, documentBodyContent, documentT
 
 
     if (docBody === undefined || docBody === null) {
-        errorMsg(mainContainer, 'No changes were made, make sure to update document before saving') 
+        errorMsg(mainContainer, 'Please update the body to save changes') 
         return;
     }
 
