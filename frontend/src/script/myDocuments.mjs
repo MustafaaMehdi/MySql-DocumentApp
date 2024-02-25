@@ -81,7 +81,7 @@ export default function myDocuments() {
                 let docUpdateDate = createElement(
                     'p',
                     `docBody${formatUpdateDate}`,
-                    'docCreationDate',
+                    'docUpdateDate',
                     `Updated: ${formatUpdateDate}`
                 );
                 docArticle.appendChild(docUpdateDate);
