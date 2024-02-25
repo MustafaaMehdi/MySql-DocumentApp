@@ -11,26 +11,61 @@ body {
             flex-direction: column;
             position: relative;
             align-items: center;
+            font-size: 1.5rem;
             .loginContainer {
                 display: flex;
                 flex-direction: column;
-                gap: 10px;
+                gap: 20px;
+                justify-content: center center;
+                .emailLabel {
+                    .emailInput {
+                        float: right;
+                        border: none;
+                        border-radius: 10px;
+                    }
+                }
                 .passwordLabel {
 
                     .passwordInput {
                         float: right;
+                        border: none;
+                        border-radius: 10px;
                     }
                 }
 
                 .signUpNameLabel {
                     .signUpNameInput {
                         float: right;
+                        border: none;
+                        border-radius: 10px;
+                        width: 70%;
                     }
                 }
                 .signUpEmailLabel {
                     .signUpEmailInput {
                         float: right;
+                        border: none;
+                        border-radius: 10px;
+                        width: 70%;
+
                     }
+                }
+                .signUpPasswordLabel {
+                    font-size: 1.5rem;
+                    .signUpPasswordInput {
+                        float: right;
+                        border: none;
+                        border-radius: 10px;
+                        width: 70%;
+
+                    }
+                }
+                .errorContainer {
+                    background-color: #db907d;
+                    border-radius: 10px;
+                    padding: 10px;
+                    text-align: center;
+                    border: 1px solid rgb(252, 65, 65);
                 }
                 .loginBtn, .signUpBtn, .registerBtn, .backToLoginBtn {
                     border: none;
@@ -38,6 +73,13 @@ body {
                     // width: 80vw;
                     height: 50px;
                     cursor: pointer;
+                }
+                .loginBtn, .registerBtn {
+                    background-color: #bdddec;
+                }
+                .loginBtn:hover, .registerBtn:hover {
+                    background-color: #123b4e;
+                    color: #fff;
                 }
             }
             .cancelBtn, .saveBtn {
@@ -49,6 +91,13 @@ body {
             .cancelBtn {
                 margin-bottom: 40px;
                 border-radius:  0 0 20px 20px;
+            }
+            .successMessage {
+                width: 16.5rem;
+                background-color: #bcd6fc;
+                border-radius: 20px;
+                padding: 10px;
+                border: 5px solid #fff;
             }
             .saveBtn {
                 background-color: #bdddec;
@@ -77,6 +126,7 @@ body {
                 }
                 .textContent {
                     // display: flex;
+                    padding: 40px;
                     flex-direction: column;
                     max-height: 50vh;
                     word-wrap: break-word; 
@@ -118,12 +168,13 @@ body {
                 gap: 1rem;
                 margin: 2rem;
                 position: relative;
+                
 
                 .docArticle {
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
-                    width: 100%;
+                    width: 500px;
                     // height: 200px;
                     grid-column: span 2;
                     border-radius: 20px;
@@ -223,6 +274,30 @@ body {
                     }
                 }
             }
+            .undoDeleteContainer {
+                margin-top: 20px;
+                background-color: #ecd3cc;
+                border-radius: 10px;
+                padding: 10px;
+                width: 250px;
+                height: 80px;
+                text-align: center;
+                border: 1px solid rgb(252, 65, 65);
+                .undoDeleteBtn {
+                    border: none;
+                    border-radius: 20px;
+                    height: 50px;
+                    width: 250px;
+                }
+            }
+            .errorContainer {
+                margin-top: 20px;
+                background-color: #db907d;
+                border-radius: 10px;
+                padding: 10px;
+                text-align: center;
+                border: 1px solid rgb(252, 65, 65);
+            }
 
             .userProfileContainer {
                 display: flex;
@@ -233,16 +308,28 @@ body {
                 color: #000000;
                 padding: 20px;
                 gap: 10px;
-                // align-items: center;
+               height: 500px;
+               width: 700px;
 
                 .currentPasswordLabel {
                     .currentPasswordInput {
                         float: right;
+                        border: none;
+                        border-radius: 10px;
                     }
                 }
                 .newPasswordLabel {
                     .newPasswordInput {
                         float: right;
+                        border: none;
+                        border-radius: 10px;
+                    }
+                }
+                .newPasswordLabel2 {
+                    .newPasswordInput2 {
+                        float: right;
+                        border: none;
+                        border-radius: 10px;
                     }
                 }
                 .changePasswordBtn, .changeNameBtn, .updateProfileBtn, .cancelBtn {
@@ -251,7 +338,24 @@ body {
                     border: none;
                     margin-bottom: 5px;
                     margin-left: 10px;
+                    padding: 10px;
+                    width: 150px;
                     border-radius: 20px;
+                }
+                .nameLabel {
+
+                    .nameInput {
+                        border: none;
+                        border-radius: 10px;
+                    }
+                }
+                .changeNameBtn, .changePasswordBtn, .updateProfileBtn {
+                    background-color: #bdddec;
+                    cursor: pointer;
+                }
+                .changeNameBtn:hover, .changePasswordBtn:hover, .updateProfileBtn:hover {
+                    background-color: #123b4e;
+                    color: #fff;
                 }
             }
         }
@@ -282,7 +386,8 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        height: 370px;
+        gap: 40px;
+        height: 450px;
     }
     .menuBtn {
         position: absolute;
@@ -358,9 +463,10 @@ body {
             padding: 0;
             margin: 0;
             position: absolute;
-            top: 55px;
+            top: 40px;
             right: 30px;
             display: none;
+            width: 100px;
         }
         .userProfileBtn {
             // margin-left: 1rem;
@@ -368,8 +474,8 @@ body {
 
         .userProfileBtn:hover .profileBtnTip  {
             position: absolute;
-            left: 120%;
-            top: 160px;
+            left: 150px;
+            top: 100px;
             background-color: #4c4c58;
             width: 130%;
             height:45px;
@@ -381,26 +487,26 @@ body {
         }
     }
 
-.documentBtnContainer {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 3rem;
-            height: 30vh;
-            width: 100%;
-            // margin-left: 1rem;
+// .documentBtnContainer {
+//             display: flex;
+//             flex-direction: column;
+//             justify-content: center;
+//             gap: 3rem;
+//             height: 30vh;
+//             width: 100%;
+//             // margin-left: 1rem;
 
-            // .createDocumentBtn, .myDocumentsBtn {
-            //     height: 4rem;
-            //     font-size: 3rem;
-            //     width: 4rem;
-            // }
+//             // .createDocumentBtn, .myDocumentsBtn {
+//             //     height: 4rem;
+//             //     font-size: 3rem;
+//             //     width: 4rem;
+//             // }
             
             .myDocumentsBtn:hover .toolTip  {
                 // font-size: 2rem;
                 position: absolute;
-                left: 120%;
-                top: 35.3%;
+                left: 150px;
+                top: 340px;
                 background-color: #4c4c58;
                 width: 120%;
                 height: 50px;
@@ -414,17 +520,17 @@ body {
                 // font-size: 2rem;
                 position: absolute;
                 left: 150px;
-                top: 25%;
+                top: 220px;
                 background-color: #4c4c58;
-                width: 120%;
-                height: 45px;
+                width: 150%;
+                height: 50px;
                 padding-top: 30px;
                 border-radius: 20px;
                 border: 5px solid #12171e;
                 display: block;
                 opacity: 0.8;
             }
-    }
+    // }
 
 
 
@@ -486,7 +592,7 @@ body {
     display: none;
 }
 
-.navBar.openMenu .userSettingsContainer .userProfileBtn:hover .profileBtnTip {
+.navBar.openMenu .userProfileBtn:hover .profileBtnTip {
     display: none;
 }
 
@@ -501,6 +607,7 @@ body {
 .navBar.openMenu .myDocumentsBtn:hover  {
     height: 80px;
 }
+
 
 .navBar.openMenu .userProfileBtn:hover  {
     height: 80px;

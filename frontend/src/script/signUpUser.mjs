@@ -57,6 +57,7 @@ export default function signUpUser() {
             'signUpPasswordInput',
             ``
         );
+        signUpPasswordInput.setAttribute('type', 'password')
         signUpPasswordLabel.appendChild(signUpPasswordInput)
 
 

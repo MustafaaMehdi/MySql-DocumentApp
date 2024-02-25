@@ -27,6 +27,14 @@ export default function checkLoginState() {
 		);
 		mainContainer.appendChild(loginContainer);
 
+		const loginHeader = createElement(
+			'h2',
+			`loginHeader`,
+			'loginHeader',
+			`Login: `
+		);
+		loginContainer.appendChild(loginHeader);
+
 		const emailLable = createElement(
 			'label',
 			`emailLabel`,
