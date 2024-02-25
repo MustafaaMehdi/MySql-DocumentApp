@@ -5,7 +5,6 @@ let mainContainer = document.getElementById('mainContainer');
 
 export default function updateDocument(updateBtn, documentBodyContent, documentTitle) {
    let docTitle = documentTitle.value
-   let docBody = documentBodyContent
    let userID = localStorage.getItem('loggedInUser')
 
     let updateDoc = {
@@ -17,14 +16,6 @@ export default function updateDocument(updateBtn, documentBodyContent, documentT
         errorMsg(mainContainer, 'Please input title') 
         return;
     } 
-
-
-    if (docBody === undefined || docBody === null) {
-        errorMsg(mainContainer, 'Please update the body to save changes') 
-        return;
-    }
-
-
  
     fetch(`http://localhost:3000/api/document/update/${updateBtn.id}`, {
         method: 'PUT',

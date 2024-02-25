@@ -71,6 +71,9 @@ export default function getEditDocument(editDocBtn) {
                     colorsText: ['#000000', '#333333', '#666666', '#999999', '#CCCCCC', '#FFFFFF'],
                     colorsBackground: ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'],  
                     events: {
+                        'initialized': function () {
+                            documentBodyContent = editor.html.get();
+                        },
                         'contentChanged': function () {
                             documentBodyContent = editor.html.get();
                             console.log(documentBodyContent);
@@ -97,7 +100,7 @@ export default function getEditDocument(editDocBtn) {
 
                 cancelBtn.addEventListener('click', myDocuments);
             
-                updateBtn.addEventListener('click', () => updateDocument(updateBtn, documentBodyContent, documentTitle));
+                updateBtn.addEventListener('click', () => updateDocument(updateBtn, documentBodyContent, documentTitle, doc));
 
             })
     
