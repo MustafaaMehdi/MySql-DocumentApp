@@ -7,25 +7,109 @@ body {
         transition: all 0.2s ease-in-out;
 
         .mainContainer {
-            
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            align-items: center;
+            .loginContainer {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                .passwordLabel {
+
+                    .passwordInput {
+                        float: right;
+                    }
+                }
+
+                .signUpNameLabel {
+                    .signUpNameInput {
+                        float: right;
+                    }
+                }
+                .signUpEmailLabel {
+                    .signUpEmailInput {
+                        float: right;
+                    }
+                }
+                .loginBtn, .signUpBtn, .registerBtn, .backToLoginBtn {
+                    border: none;
+                    border-radius: 10px;
+                    // width: 80vw;
+                    height: 50px;
+                    cursor: pointer;
+                }
+            }
+            .cancelBtn, .saveBtn {
+                border: 1px solid black;
+                width: 80vw;
+                height: 50px;
+                cursor: pointer;
+            }
+            .cancelBtn {
+                margin-bottom: 40px;
+                border-radius:  0 0 20px 20px;
+            }
+            .saveBtn {
+                background-color: #bdddec;
+            }
+            .saveBtn:hover {
+                background-color: #123b4e;
+                color: #fff;
+            }
+            .cancelBtn:hover {
+                background-color: #db907d;
+            }
             .docEditorContainer {
                 display: flex;
                 flex-direction: column;
-
+                width: 80vw;
+                .documentTitle {
+                    border: none;
+                    overflow: hidden;
+                    width: 79.5vw;
+                    height: 50px;
+                    text-align: center;
+                    margin: 0;
+                    background-color: #fff;
+                    border-radius: 20px 20px 0 0 ;
+                    padding-top: 20px;
+                }
                 .textContent {
-                    display: flex;
+                    // display: flex;
                     flex-direction: column;
-                    max-width: 100%;
                     max-height: 50vh;
                     word-wrap: break-word; 
                     background-color: #fff;
-                    border-radius: 20px;
+                    border-radius: 5px;
                     overflow: auto;
                 }
 
-                button {
-                    border: none;
-                    
+                .cancelBtn, .updateBtn, .editDocBtn {
+                    border: 1px solid black;
+                    width: 80vw;
+                    height: 50px;
+                    cursor: pointer;
+                }
+                .editDocBtn {
+                    background-color: #ece19e;
+                }
+                .editDocBtn:hover {
+                    background-color: #ddcb54;
+                }
+                .cancelBtn {
+                    margin-bottom: 40px;
+                    border-radius:  0 0 20px 20px;
+                }
+                .updateBtn {
+                    background-color: #bdddec;
+                }
+                .updateBtn:hover {
+                    background-color: #123b4e;
+                    color: #fff;
+                }
+                .cancelBtn:hover {
+                    background-color: #db907d;
                 }
             }
             .docArticleContainer {
@@ -57,6 +141,21 @@ body {
                         font-size: 0.8rem;
                         // text-align: center;
                         margin-bottom: 5px;
+                    }
+                    .deleteCheckBtn, .cancelDeleteBtn {
+                        width: 100%;
+                        border: none;
+                        height: 30px;
+                        cursor: pointer;
+                    }
+                    .cancelDeleteBtn {
+                        border-radius: 0 0 19px 19px;
+                    }
+                    .deleteCheckBtn {
+                        background-color: #db907d;
+                    }
+                    .deleteCheckBtn:hover {
+                        background-color: #be5b42;
                     }
                     .docBtnContainer {
                         display: flex;
@@ -105,7 +204,6 @@ body {
 
                         .deleteDocBtn:hover {
                             background-color: #db907d;
-                            border-radius: 0 0 19px 0 ;
                         }
 
 
@@ -130,11 +228,23 @@ body {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-evenly;
-                height: 200px;
                 background-color:#6c7c83;
                 border-radius: 20px;
                 color: #000000;
-                align-items: center;
+                padding: 20px;
+                gap: 10px;
+                // align-items: center;
+
+                .currentPasswordLabel {
+                    .currentPasswordInput {
+                        float: right;
+                    }
+                }
+                .newPasswordLabel {
+                    .newPasswordInput {
+                        float: right;
+                    }
+                }
                 .changePasswordBtn, .changeNameBtn, .updateProfileBtn, .cancelBtn {
                     align-items: center;
                     width: 100px;
@@ -155,7 +265,7 @@ body {
 }
 
 .navBar {
-    position: absolute;
+    position: fixed;
     padding: 0;
     left:0;
     bottom: 0rem;
@@ -167,6 +277,13 @@ body {
     transition: all 0.5s ease;
     z-index: 2;
     padding-bottom: 0;
+    .navBtnContainer {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 370px;
+    }
     .menuBtn {
         position: absolute;
         top: 2rem;
@@ -226,19 +343,23 @@ body {
     //     border-radius: 100%;
     //     border: none;
     // }
-    .userSettingsContainer {
-        height: 20vh;
-        margin-left: 0;
+    // .userSettingsContainer {
+    //     height: 20vh;
+    //     margin-left: 0;
         
 
         .profileImg {
             border-radius: 100%;
-            margin-top: 4rem;
+            // margin-top: 4rem;
             margin-left: 1.5rem;
             width: 50%;
         }
         .profileName {
-
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: 55px;
+            right: 30px;
             display: none;
         }
         .userProfileBtn {
@@ -314,7 +435,7 @@ body {
         border: none;
         background-color: rgb(185, 68, 68);
         color: white;
-        width: 7.9rem;
+        width: 125px;
         font-size: 2rem;
         height: 3rem;
         cursor: pointer;
@@ -329,7 +450,7 @@ body {
 
 
 
-}
+// }
 .toolTip, .createDocumentBtnTip, .profileBtnTip {
     display: none;
 }
@@ -339,7 +460,7 @@ body {
 }
 
 .navBar.openMenu .profileImg {
-    width: 70%;
+    width: 20%;
     padding: 20px;
 }
 
@@ -348,9 +469,9 @@ body {
 }
 
 .navBar.openMenu .profileName {
-    display: flex;
+    display: block;
     padding-left: 70px;
-    font-size: 1.5rem;
+    // font-size: 1.5rem;
     margin-top: 0;
     transition: all 0.2s ease-in-out;
     font-family: $primaryFont;
@@ -422,10 +543,10 @@ body {
     }
 }
 
-.fr-box {
+.fr-box, .fr-toolbar {
 
-    width: 1000px;
-    border-radius: 200px;
+    width: 80vw;
+    border-radius: 0px !important;
 
 }
 

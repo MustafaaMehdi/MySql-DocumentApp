@@ -90,7 +90,7 @@ export default function newDocument() {
         'Cancel'
     );
 
-    mainContainer.append(cancelBtn, saveBtn)
+    mainContainer.append(saveBtn, cancelBtn)
 
     cancelBtn.addEventListener('click', myDocuments);
 

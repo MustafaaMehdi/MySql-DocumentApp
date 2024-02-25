@@ -89,7 +89,7 @@ export default function getEditDocument(editDocBtn) {
                 let cancelBtn = createElement(
                     'button',
                     'cancelBtn',
-                     `${editDocBtn.id}`,
+                     `cancelBtn`,
                     'Cancel'
                 );
                 

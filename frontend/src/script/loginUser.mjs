@@ -1,4 +1,5 @@
 import checkLoginState from "./checkLoginState.mjs";
+import errorMsg from "../lib/errorMsg.mjs";
 
 export default function loginUser() {
     console.log('Login');
@@ -26,7 +27,8 @@ export default function loginUser() {
 				localStorage.setItem('loggedInUserName', user.name);
                 checkLoginState(user.name)
 			} else {
-				console.log('STOP wrong user data');
+				errorMsg(loginContainer, 'Wrong E-mail or password') 
+				return;
 			}
 		});
 }

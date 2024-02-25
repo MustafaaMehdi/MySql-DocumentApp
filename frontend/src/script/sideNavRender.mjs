@@ -36,13 +36,21 @@ export default function sideNavRender() {
 	);
 	navBar.appendChild(menuBtn);
 
-	let userSettingsContainer = createElement(
+	// let userSettingsContainer = createElement(
+	// 	'section',
+	// 	`userSettingsContainer`,
+	// 	'userSettingsContainer',
+	// 	``
+	// );
+	// navBar.appendChild(userSettingsContainer);
+
+    	let navBtnContainer = createElement(
 		'section',
-		`userSettingsContainer`,
-		'userSettingsContainer',
+		`navBtnContainer`,
+		'navBtnContainer',
 		``
 	);
-	navBar.appendChild(userSettingsContainer);
+	navBar.appendChild(navBtnContainer);
 
 	// let userSettingsBtn = createElement(
 	//     'button',
@@ -85,7 +93,7 @@ export default function sideNavRender() {
 	);
 	profileBtn.append(profileBtnTitle, profileBtnTip);
 
-	userSettingsContainer.append(profileImg, profileName, profileBtn);
+	navBtnContainer.append(profileImg, profileName, profileBtn);
 
 	let documentBtnContainer = createElement(
 		'section',
@@ -93,7 +101,7 @@ export default function sideNavRender() {
 		'documentBtnContainer',
 		``
 	);
-	navBar.appendChild(documentBtnContainer);
+	// navBar.appendChild(documentBtnContainer);
 
 	let myDocumentsBtn = createElement(
 		'button',
@@ -137,7 +145,7 @@ export default function sideNavRender() {
 	);
 	createDocumentBtn.append(createDocumentBtnTip, createDocumentBtnTitle);
 
-	documentBtnContainer.append(createDocumentBtn, myDocumentsBtn);
+	navBtnContainer.append(createDocumentBtn, myDocumentsBtn);
 
 	const logoutBtn = createElement(
 		'button',

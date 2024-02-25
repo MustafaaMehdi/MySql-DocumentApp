@@ -71,7 +71,7 @@ export default function getViewDoc(viewDocBtn, formatCreateDate, formatUpdateDat
                 let cancelBtn = createElement(
                     'button',
                     'cancelBtn',
-                     `${editDocBtn.id}`,
+                     `cancelBtn`,
                     'Cancel'
                 );
                 

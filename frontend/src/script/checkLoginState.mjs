@@ -61,7 +61,7 @@ export default function checkLoginState() {
 			'button',
 			`signUpBtn`,
 			'signUpBtn',
-			`Sign-up`
+			`No account yet? Sign-up here`
 		);
 		loginContainer.append(loginBtn, signUpBtn);
 
