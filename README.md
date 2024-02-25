@@ -6,7 +6,7 @@
 3. Nodemon start backend
 4. Enjoy
 
-### DB credentials
+### DB credentials (.env)
 DB_HOST= "localhost"
 DB_PORT = "8889"
 DB_USER = "documentApp"

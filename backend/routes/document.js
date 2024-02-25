@@ -6,8 +6,6 @@ router.get('/all/:userId', async function (req, res) {
 	try {
 		let userId = req.params.userId;
 		let query = 'SELECT * FROM documents WHERE userId = ? AND isDeleted = 0';
-		// values = [userId];
-
 		connection.query(query, [userId], async (err, data) => {
 			if (err) {
 				console.log('err', err);
@@ -116,24 +114,22 @@ router.delete('/delete/:documentId', async function (req, res) {
 			let documentId = req.params.documentId;
 			let checkDoc =
 				'SELECT isDeleted FROM documents WHERE userId = ? AND documentId = ?';
-				let values = [userId, documentId];
-
+			let values = [userId, documentId];
 
 			connection.query(checkDoc, values, async (err, data) => {
 				if (err) {
 					console.log('err', err);
 					return res.status(500).json({ message: 'Something went wrong' });
 				}
-				// let query 
+				// let query
 				let isDeleted = data[0].isDeleted;
 				if (isDeleted === 1) {
 					checkDoc =
-					'UPDATE documents SET isDeleted = 0 WHERE userId = ? AND documentId = ?';
+						'UPDATE documents SET isDeleted = 0 WHERE userId = ? AND documentId = ?';
 				} else if (isDeleted === 0) {
 					checkDoc =
-					'UPDATE documents SET isDeleted = 1 WHERE userId = ? AND documentId = ?';
+						'UPDATE documents SET isDeleted = 1 WHERE userId = ? AND documentId = ?';
 				}
-
 
 				connection.query(checkDoc, values, async (err, data) => {
 					console.log(err);

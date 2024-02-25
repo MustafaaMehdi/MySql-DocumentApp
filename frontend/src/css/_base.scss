@@ -1,663 +1,625 @@
-
 body {
-    padding-left: 150px;
-    background-color:#acbfcb;
+	padding-left: 150px;
+	background-color: #acbfcb;
 
-    .uniDoc {
-        transition: all 0.2s ease-in-out;
+	.uniDoc {
+		transition: all 0.2s ease-in-out;
 
-        .mainContainer {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            align-items: center;
-            font-size: 1.5rem;
-            .loginContainer {
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-                justify-content: center center;
-                .emailLabel {
-                    .emailInput {
-                        float: right;
-                        border: none;
-                        border-radius: 10px;
-                    }
-                }
-                .passwordLabel {
+		.mainContainer {
+			display: flex;
+			flex-direction: column;
+			position: relative;
+			align-items: center;
+			font-size: 1.5rem;
+			.loginContainer {
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+				justify-content: center center;
+				.emailLabel {
+					.emailInput {
+						float: right;
+						border: none;
+						border-radius: 10px;
+					}
+				}
+				.passwordLabel {
+					.passwordInput {
+						float: right;
+						border: none;
+						border-radius: 10px;
+					}
+				}
 
-                    .passwordInput {
-                        float: right;
-                        border: none;
-                        border-radius: 10px;
-                    }
-                }
+				.signUpNameLabel {
+					.signUpNameInput {
+						float: right;
+						border: none;
+						border-radius: 10px;
+						width: 70%;
+					}
+				}
+				.signUpEmailLabel {
+					.signUpEmailInput {
+						float: right;
+						border: none;
+						border-radius: 10px;
+						width: 70%;
+					}
+				}
+				.signUpPasswordLabel {
+					font-size: 1.5rem;
+					.signUpPasswordInput {
+						float: right;
+						border: none;
+						border-radius: 10px;
+						width: 70%;
+					}
+				}
+				.errorContainer {
+					background-color: #db907d;
+					border-radius: 10px;
+					padding: 10px;
+					text-align: center;
+					border: 1px solid rgb(252, 65, 65);
+				}
+				.loginBtn,
+				.signUpBtn,
+				.registerBtn,
+				.backToLoginBtn {
+					border: none;
+					border-radius: 10px;
+					// width: 80vw;
+					height: 50px;
+					cursor: pointer;
+				}
+				.loginBtn,
+				.registerBtn {
+					background-color: #bdddec;
+				}
+				.loginBtn:hover,
+				.registerBtn:hover {
+					background-color: #123b4e;
+					color: #fff;
+				}
+			}
+			.cancelBtn,
+			.saveBtn {
+				border: 1px solid black;
+				width: 80vw;
+				height: 50px;
+				cursor: pointer;
+			}
+			.cancelBtn {
+				margin-bottom: 40px;
+				border-radius: 0 0 20px 20px;
+			}
+			.successMessage {
+				width: 16.5rem;
+				background-color: #bcd6fc;
+				border-radius: 20px;
+				padding: 10px;
+				border: 5px solid #fff;
+			}
+			.saveBtn {
+				background-color: #bdddec;
+			}
+			.saveBtn:hover {
+				background-color: #123b4e;
+				color: #fff;
+			}
+			.cancelBtn:hover {
+				background-color: #db907d;
+			}
+			.docEditorContainer {
+				display: flex;
+				flex-direction: column;
+				width: 80vw;
+				.documentTitle {
+					border: none;
+					overflow: hidden;
+					width: 79.5vw;
+					height: 50px;
+					text-align: center;
+					margin: 0;
+					background-color: #fff;
+					border-radius: 20px 20px 0 0;
+					padding-top: 20px;
+				}
+				.textContent {
+					padding: 40px;
+					flex-direction: column;
+					max-height: 50vh;
+					word-wrap: break-word;
+					background-color: #fff;
+					border-radius: 5px;
+					overflow: auto;
+				}
 
-                .signUpNameLabel {
-                    .signUpNameInput {
-                        float: right;
-                        border: none;
-                        border-radius: 10px;
-                        width: 70%;
-                    }
-                }
-                .signUpEmailLabel {
-                    .signUpEmailInput {
-                        float: right;
-                        border: none;
-                        border-radius: 10px;
-                        width: 70%;
+				.cancelBtn,
+				.updateBtn,
+				.editDocBtn {
+					border: 1px solid black;
+					width: 80vw;
+					height: 50px;
+					cursor: pointer;
+				}
+				.editDocBtn {
+					background-color: #ece19e;
+				}
+				.editDocBtn:hover {
+					background-color: #ddcb54;
+				}
+				.cancelBtn {
+					margin-bottom: 40px;
+					border-radius: 0 0 20px 20px;
+				}
+				.updateBtn {
+					background-color: #bdddec;
+				}
+				.updateBtn:hover {
+					background-color: #123b4e;
+					color: #fff;
+				}
+				.cancelBtn:hover {
+					background-color: #db907d;
+				}
+			}
+			.docArticleContainer {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				gap: 1rem;
+				margin: 2rem;
+				position: relative;
 
-                    }
-                }
-                .signUpPasswordLabel {
-                    font-size: 1.5rem;
-                    .signUpPasswordInput {
-                        float: right;
-                        border: none;
-                        border-radius: 10px;
-                        width: 70%;
+				.docArticle {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					width: 500px;
+					// height: 200px;
+					grid-column: span 2;
+					border-radius: 20px;
+					margin-bottom: 1rem;
+					border: 1px solid #12171e;
+					background-color: #fff;
+					.docTitle {
+						text-align: center;
+					}
 
-                    }
-                }
-                .errorContainer {
-                    background-color: #db907d;
-                    border-radius: 10px;
-                    padding: 10px;
-                    text-align: center;
-                    border: 1px solid rgb(252, 65, 65);
-                }
-                .loginBtn, .signUpBtn, .registerBtn, .backToLoginBtn {
-                    border: none;
-                    border-radius: 10px;
-                    // width: 80vw;
-                    height: 50px;
-                    cursor: pointer;
-                }
-                .loginBtn, .registerBtn {
-                    background-color: #bdddec;
-                }
-                .loginBtn:hover, .registerBtn:hover {
-                    background-color: #123b4e;
-                    color: #fff;
-                }
-            }
-            .cancelBtn, .saveBtn {
-                border: 1px solid black;
-                width: 80vw;
-                height: 50px;
-                cursor: pointer;
-            }
-            .cancelBtn {
-                margin-bottom: 40px;
-                border-radius:  0 0 20px 20px;
-            }
-            .successMessage {
-                width: 16.5rem;
-                background-color: #bcd6fc;
-                border-radius: 20px;
-                padding: 10px;
-                border: 5px solid #fff;
-            }
-            .saveBtn {
-                background-color: #bdddec;
-            }
-            .saveBtn:hover {
-                background-color: #123b4e;
-                color: #fff;
-            }
-            .cancelBtn:hover {
-                background-color: #db907d;
-            }
-            .docEditorContainer {
-                display: flex;
-                flex-direction: column;
-                width: 80vw;
-                .documentTitle {
-                    border: none;
-                    overflow: hidden;
-                    width: 79.5vw;
-                    height: 50px;
-                    text-align: center;
-                    margin: 0;
-                    background-color: #fff;
-                    border-radius: 20px 20px 0 0 ;
-                    padding-top: 20px;
-                }
-                .textContent {
-                    // display: flex;
-                    padding: 40px;
-                    flex-direction: column;
-                    max-height: 50vh;
-                    word-wrap: break-word; 
-                    background-color: #fff;
-                    border-radius: 5px;
-                    overflow: auto;
-                }
+					.docCreationDate {
+						background-color: #9fc7ff;
+						max-width: 45%;
+						border-radius: 0 10px 10px 0;
+						font-size: 0.8rem;
+						margin-bottom: 5px;
+					}
+					.deleteCheckBtn,
+					.cancelDeleteBtn {
+						width: 100%;
+						border: none;
+						height: 30px;
+						cursor: pointer;
+					}
+					.cancelDeleteBtn {
+						border-radius: 0 0 19px 19px;
+					}
+					.deleteCheckBtn {
+						background-color: #db907d;
+					}
+					.deleteCheckBtn:hover {
+						background-color: #be5b42;
+					}
+					.docBtnContainer {
+						display: flex;
+						justify-content: space-evenly;
+						border-top: 1px solid black;
+						.viewDocBtn,
+						.editDocBtn,
+						.deleteDocBtn {
+							width: 100%;
+							height: 50px;
+							border: none;
+							cursor: pointer;
+						}
+						.viewDocBtn {
+							background-color: #bdddec;
+							border-right: 1px solid black;
+							border-left: 1px solid black;
+						}
+						.editDocBtn {
+							border-radius: 0 0 0 19px;
+						}
 
-                .cancelBtn, .updateBtn, .editDocBtn {
-                    border: 1px solid black;
-                    width: 80vw;
-                    height: 50px;
-                    cursor: pointer;
-                }
-                .editDocBtn {
-                    background-color: #ece19e;
-                }
-                .editDocBtn:hover {
-                    background-color: #ddcb54;
-                }
-                .cancelBtn {
-                    margin-bottom: 40px;
-                    border-radius:  0 0 20px 20px;
-                }
-                .updateBtn {
-                    background-color: #bdddec;
-                }
-                .updateBtn:hover {
-                    background-color: #123b4e;
-                    color: #fff;
-                }
-                .cancelBtn:hover {
-                    background-color: #db907d;
-                }
-            }
-            .docArticleContainer {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1rem;
-                margin: 2rem;
-                position: relative;
-                
+						.deleteDocBtn {
+							border-radius: 0 0 19px 0;
+						}
 
-                .docArticle {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    width: 500px;
-                    // height: 200px;
-                    grid-column: span 2;
-                    border-radius: 20px;
-                    margin-bottom: 1rem;
-                    border: 1px solid #12171e;
-                    background-color:#fff;
-                    .docTitle {
-                        text-align: center;
-                    }
+						.viewDocBtn {
+							background-color: #bdddec;
+							border-right: 1px solid black;
+							border-left: 1px solid black;
+						}
+						.editDocBtn:hover {
+							background-color: #ece19e;
+						}
 
-                    .docCreationDate {
-                        background-color: #9fc7ff;
-                        max-width: 45%;
-                        border-radius: 0 10px 10px 0;
-                        font-size: 0.8rem;
-                        // text-align: center;
-                        margin-bottom: 5px;
-                    }
-                    .deleteCheckBtn, .cancelDeleteBtn {
-                        width: 100%;
-                        border: none;
-                        height: 30px;
-                        cursor: pointer;
-                    }
-                    .cancelDeleteBtn {
-                        border-radius: 0 0 19px 19px;
-                    }
-                    .deleteCheckBtn {
-                        background-color: #db907d;
-                    }
-                    .deleteCheckBtn:hover {
-                        background-color: #be5b42;
-                    }
-                    .docBtnContainer {
-                        display: flex;
-                        justify-content: space-evenly;
-                        border-top: 1px solid black;
-                        // border-radius: 0 0 20px 20px;
-                        .viewDocBtn, .editDocBtn, .deleteDocBtn {
-                            width: 100%;
-                            height: 50px;
-                            border: none;
-                            cursor: pointer;
-                        }
-                        .viewDocBtn {
-                            background-color: #bdddec;
-                                                        // background-color: #ece19e;
-                           border-right: 1px solid black;
-                           border-left: 1px solid black;
-                        }
-                        .editDocBtn {
-                            // background-color: #ece19e;
+						.viewDocBtn:hover {
+							background-color: #123b4e;
+							color: #fff;
+						}
 
-                            border-radius: 0 0 0 19px;
+						.deleteDocBtn:hover {
+							background-color: #db907d;
+						}
+					}
+					.docBody {
+						display: flex;
+						flex-direction: column;
+						max-width: 70%;
+						word-wrap: break-word;
+						background-color: #fff;
+						margin: 0 0 0 50px;
 
-                        }
+						p span {
+							font-size: 0.5rem !important;
+							align-items: center;
+						}
+					}
+				}
+			}
+			.undoDeleteContainer {
+				margin-top: 20px;
+				background-color: #ecd3cc;
+				border-radius: 10px;
+				padding: 10px;
+				width: 250px;
+				height: 80px;
+				text-align: center;
+				border: 1px solid rgb(252, 65, 65);
+				.undoDeleteBtn {
+					border: none;
+					border-radius: 20px;
+					height: 50px;
+					width: 250px;
+				}
+			}
+			.errorContainer {
+				margin-top: 20px;
+				background-color: #db907d;
+				border-radius: 10px;
+				padding: 10px;
+				text-align: center;
+				border: 1px solid rgb(252, 65, 65);
+			}
 
-                        .deleteDocBtn {
-                            // background-color: #db907d;
-                            border-radius: 0 0 19px 0 ;
-                        }
+			.userProfileContainer {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-evenly;
+				background-color: #6c7c83;
+				border-radius: 20px;
+				color: #000000;
+				padding: 20px;
+				gap: 10px;
+				height: 500px;
+				width: 700px;
 
-                        .viewDocBtn {
-                            background-color: #bdddec;
-                                                        // background-color: #ece19e;
-                           border-right: 1px solid black;
-                           border-left: 1px solid black;
-                        }
-                        .editDocBtn:hover {
-                            background-color: #ece19e;
-                        }
-
-                        .viewDocBtn:hover {
-                            background-color: #123b4e;
-                            color: #fff;
-
-                        }
-
-                        .deleteDocBtn:hover {
-                            background-color: #db907d;
-                        }
-
-
-                    }
-                    .docBody {
-                        display: flex;
-                        flex-direction: column;
-                        max-width: 70%;
-                        word-wrap: break-word; 
-                        background-color: #fff;
-                        margin: 0 0 0 50px;
-                        
-                        p span {
-                            font-size: 0.5rem !important;
-                            align-items: center;
-                        }
-                    }
-                }
-            }
-            .undoDeleteContainer {
-                margin-top: 20px;
-                background-color: #ecd3cc;
-                border-radius: 10px;
-                padding: 10px;
-                width: 250px;
-                height: 80px;
-                text-align: center;
-                border: 1px solid rgb(252, 65, 65);
-                .undoDeleteBtn {
-                    border: none;
-                    border-radius: 20px;
-                    height: 50px;
-                    width: 250px;
-                }
-            }
-            .errorContainer {
-                margin-top: 20px;
-                background-color: #db907d;
-                border-radius: 10px;
-                padding: 10px;
-                text-align: center;
-                border: 1px solid rgb(252, 65, 65);
-            }
-
-            .userProfileContainer {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-evenly;
-                background-color:#6c7c83;
-                border-radius: 20px;
-                color: #000000;
-                padding: 20px;
-                gap: 10px;
-               height: 500px;
-               width: 700px;
-
-                .currentPasswordLabel {
-                    .currentPasswordInput {
-                        float: right;
-                        border: none;
-                        border-radius: 10px;
-                    }
-                }
-                .newPasswordLabel {
-                    .newPasswordInput {
-                        float: right;
-                        border: none;
-                        border-radius: 10px;
-                    }
-                }
-                .newPasswordLabel2 {
-                    .newPasswordInput2 {
-                        float: right;
-                        border: none;
-                        border-radius: 10px;
-                    }
-                }
-                .changePasswordBtn, .changeNameBtn, .updateProfileBtn, .cancelBtn {
-                    align-items: center;
-                    width: 100px;
-                    border: none;
-                    margin-bottom: 5px;
-                    margin-left: 10px;
-                    padding: 10px;
-                    width: 150px;
-                    border-radius: 20px;
-                }
-                .nameLabel {
-
-                    .nameInput {
-                        border: none;
-                        border-radius: 10px;
-                    }
-                }
-                .changeNameBtn, .changePasswordBtn, .updateProfileBtn {
-                    background-color: #bdddec;
-                    cursor: pointer;
-                }
-                .changeNameBtn:hover, .changePasswordBtn:hover, .updateProfileBtn:hover {
-                    background-color: #123b4e;
-                    color: #fff;
-                }
-            }
-        }
-    }
+				.currentPasswordLabel {
+					.currentPasswordInput {
+						float: right;
+						border: none;
+						border-radius: 10px;
+					}
+				}
+				.newPasswordLabel {
+					.newPasswordInput {
+						float: right;
+						border: none;
+						border-radius: 10px;
+					}
+				}
+				.newPasswordLabel2 {
+					.newPasswordInput2 {
+						float: right;
+						border: none;
+						border-radius: 10px;
+					}
+				}
+				.changePasswordBtn,
+				.changeNameBtn,
+				.updateProfileBtn,
+				.cancelBtn {
+					align-items: center;
+					width: 100px;
+					border: none;
+					margin-bottom: 5px;
+					margin-left: 10px;
+					padding: 10px;
+					width: 150px;
+					border-radius: 20px;
+				}
+				.nameLabel {
+					.nameInput {
+						border: none;
+						border-radius: 10px;
+					}
+				}
+				.changeNameBtn,
+				.changePasswordBtn,
+				.updateProfileBtn {
+					background-color: #bdddec;
+					cursor: pointer;
+				}
+				.changeNameBtn:hover,
+				.changePasswordBtn:hover,
+				.updateProfileBtn:hover {
+					background-color: #123b4e;
+					color: #fff;
+				}
+			}
+		}
+	}
 }
 
-.btnTitle, .toolTip, .profileBtnTip, .createDocumentBtnTip, .uniDoc  {
-    font-family: $primaryFont;
-    font-size: 1rem;
-    justify-content: center;
+.btnTitle,
+.toolTip,
+.profileBtnTip,
+.createDocumentBtnTip,
+.uniDoc {
+	font-family: $primaryFont;
+	font-size: 1rem;
+	justify-content: center;
 }
 
 .navBar {
-    position: fixed;
-    padding: 0;
-    left:0;
-    bottom: 0rem;
-    height: 100vh;
-    width: 100px;
-    background-color: #12171e;
-    color: #fff;
-    padding: .4rem .8rem;
-    transition: all 0.5s ease;
-    z-index: 2;
-    padding-bottom: 0;
-    .navBtnContainer {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        gap: 40px;
-        height: 450px;
-    }
-    .menuBtn {
-        position: absolute;
-        top: 2rem;
-        right: -25%;
-        font-size: 3rem;
-        line-height: 50px;
-        transform: translateX(-20%);
-        cursor: pointer;
-        width: 50px;
-        background-color: #323f4e;
-        border-radius: 100%;
-    }
+	position: fixed;
+	padding: 0;
+	left: 0;
+	bottom: 0rem;
+	height: 100vh;
+	width: 100px;
+	background-color: #12171e;
+	color: #fff;
+	padding: 0.4rem 0.8rem;
+	transition: all 0.5s ease;
+	z-index: 2;
+	padding-bottom: 0;
+	.navBtnContainer {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		gap: 40px;
+		height: 450px;
+	}
+	.menuBtn {
+		position: absolute;
+		top: 2rem;
+		right: -25%;
+		font-size: 3rem;
+		line-height: 50px;
+		transform: translateX(-20%);
+		cursor: pointer;
+		width: 50px;
+		background-color: #323f4e;
+		border-radius: 100%;
+	}
 
-    .logoContainer {
-        position: absolute;
-        bottom: 4rem;
-        left: 0.75rem;
+	.logoContainer {
+		position: absolute;
+		bottom: 4rem;
+		left: 0.75rem;
 
-        .logoContainerImg {
-            width: 100px;
-        }
-        .logoText {
-            position: relative;
-            bottom: 0.3rem;
-            left: 0.7rem;
-            margin: 0;
-            font-size: 1.3rem;
-            background-clip: text;
-            background-size: 100%;
-        }
-    }
-    // .documentBtnContainer {
-    //     // position: relative;
-    //     top: 10%;
-    //     height: 30vh;
-    //     }
+		.logoContainerImg {
+			width: 100px;
+		}
+		.logoText {
+			position: relative;
+			bottom: 0.3rem;
+			left: 0.7rem;
+			margin: 0;
+			font-size: 1.3rem;
+			background-clip: text;
+			background-size: 100%;
+		}
+	}
 
-    .createDocumentBtn, .userProfileBtn, .myDocumentsBtn {
-        // border-radius: 100%;
-        border: none;
-        height: 4rem;
-        font-size: 3rem;
-        width: 100%;
-        background-color: #12171e;
-        color: #fff;
-        padding: 0;
-    }
-    .createDocumentBtn:hover, .userProfileBtn:hover, .myDocumentsBtn:hover {
-        background-color: #323f4e;
-        border-radius: 0.6rem;
-        height: 64px;
-        transition: all 0.5s ease-in-out;
-        cursor: pointer;
-    }
+	.createDocumentBtn,
+	.userProfileBtn,
+	.myDocumentsBtn {
+		border: none;
+		height: 4rem;
+		font-size: 3rem;
+		width: 100%;
+		background-color: #12171e;
+		color: #fff;
+		padding: 0;
+	}
+	.createDocumentBtn:hover,
+	.userProfileBtn:hover,
+	.myDocumentsBtn:hover {
+		background-color: #323f4e;
+		border-radius: 0.6rem;
+		height: 64px;
+		transition: all 0.5s ease-in-out;
+		cursor: pointer;
+	}
 
-    // .createDocumentBtn, ., .myDocumentsBtn {
-    //     border-radius: 100%;
-    //     border: none;
-    // }
-    // .userSettingsContainer {
-    //     height: 20vh;
-    //     margin-left: 0;
-        
+	.profileImg {
+		border-radius: 100%;
+		// margin-top: 4rem;
+		margin-left: 1.5rem;
+		width: 50%;
+	}
+	.profileName {
+		padding: 0;
+		margin: 0;
+		position: absolute;
+		top: 40px;
+		right: 30px;
+		display: none;
+		width: 100px;
+	}
 
-        .profileImg {
-            border-radius: 100%;
-            // margin-top: 4rem;
-            margin-left: 1.5rem;
-            width: 50%;
-        }
-        .profileName {
-            padding: 0;
-            margin: 0;
-            position: absolute;
-            top: 40px;
-            right: 30px;
-            display: none;
-            width: 100px;
-        }
-        .userProfileBtn {
-            // margin-left: 1rem;
-        }
+	.userProfileBtn:hover .profileBtnTip {
+		position: absolute;
+		left: 150px;
+		top: 100px;
+		background-color: #4c4c58;
+		width: 130%;
+		height: 45px;
+		padding-top: 30px;
+		border-radius: 20px;
+		border: 5px solid #12171e;
+		display: block;
+		opacity: 0.9;
+	}
+}
 
-        .userProfileBtn:hover .profileBtnTip  {
-            position: absolute;
-            left: 150px;
-            top: 100px;
-            background-color: #4c4c58;
-            width: 130%;
-            height:45px;
-            padding-top: 30px;
-            border-radius: 20px;
-            border: 5px solid #12171e;
-            display: block;
-            opacity: 0.9;
-        }
-    }
+.myDocumentsBtn:hover .toolTip {
+	// font-size: 2rem;
+	position: absolute;
+	left: 150px;
+	top: 340px;
+	background-color: #4c4c58;
+	width: 120%;
+	height: 50px;
+	padding-top: 30px;
+	border-radius: 20px;
+	border: 5px solid #12171e;
+	display: block;
+	opacity: 0.8;
+}
+.createDocumentBtn:hover .createDocumentBtnTip {
+	// font-size: 2rem;
+	position: absolute;
+	left: 150px;
+	top: 220px;
+	background-color: #4c4c58;
+	width: 150%;
+	height: 50px;
+	padding-top: 30px;
+	border-radius: 20px;
+	border: 5px solid #12171e;
+	display: block;
+	opacity: 0.8;
+}
 
-// .documentBtnContainer {
-//             display: flex;
-//             flex-direction: column;
-//             justify-content: center;
-//             gap: 3rem;
-//             height: 30vh;
-//             width: 100%;
-//             // margin-left: 1rem;
+.logoutBtn {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	border: none;
+	background-color: rgb(185, 68, 68);
+	color: white;
+	width: 125px;
+	font-size: 2rem;
+	height: 3rem;
+	cursor: pointer;
+}
 
-//             // .createDocumentBtn, .myDocumentsBtn {
-//             //     height: 4rem;
-//             //     font-size: 3rem;
-//             //     width: 4rem;
-//             // }
-            
-            .myDocumentsBtn:hover .toolTip  {
-                // font-size: 2rem;
-                position: absolute;
-                left: 150px;
-                top: 340px;
-                background-color: #4c4c58;
-                width: 120%;
-                height: 50px;
-                padding-top: 30px;
-                border-radius: 20px;
-                border: 5px solid #12171e;
-                display: block;
-                opacity: 0.8;
-            }
-            .createDocumentBtn:hover .createDocumentBtnTip  {
-                // font-size: 2rem;
-                position: absolute;
-                left: 150px;
-                top: 220px;
-                background-color: #4c4c58;
-                width: 150%;
-                height: 50px;
-                padding-top: 30px;
-                border-radius: 20px;
-                border: 5px solid #12171e;
-                display: block;
-                opacity: 0.8;
-            }
-    // }
+.logoutBtn:hover {
+	background-color: rgb(110, 16, 16);
+}
 
-
-
-    .logoutBtn {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        border: none;
-        background-color: rgb(185, 68, 68);
-        color: white;
-        width: 125px;
-        font-size: 2rem;
-        height: 3rem;
-        cursor: pointer;
-    }
-
-    .logoutBtn:hover {
-
-        background-color: rgb(110, 16, 16);
-
-    }
-
-
-
-
-// }
-.toolTip, .createDocumentBtnTip, .profileBtnTip {
-    display: none;
+.toolTip,
+.createDocumentBtnTip,
+.profileBtnTip {
+	display: none;
 }
 
 .btnTitle {
-    display: none;
+	display: none;
 }
 
 .navBar.openMenu .profileImg {
-    width: 20%;
-    padding: 20px;
+	width: 20%;
+	padding: 20px;
 }
 
 .navBar.openMenu .documentBtnContainer {
-    height: 70vh;
+	height: 70vh;
 }
 
 .navBar.openMenu .profileName {
-    display: block;
-    padding-left: 70px;
-    // font-size: 1.5rem;
-    margin-top: 0;
-    transition: all 0.2s ease-in-out;
-    font-family: $primaryFont;
+	display: block;
+	padding-left: 70px;
+	margin-top: 0;
+	transition: all 0.2s ease-in-out;
+	font-family: $primaryFont;
 }
 
 .navBar.openMenu .btnTitle {
-    display: flex;
-    font-size: 1rem;
-    margin-top: 10px;
+	display: flex;
+	font-size: 1rem;
+	margin-top: 10px;
 }
 .navBar.openMenu .myDocumentsBtn:hover .toolTip {
-    display: none;
+	display: none;
 }
 
 .navBar.openMenu .userProfileBtn:hover .profileBtnTip {
-    display: none;
+	display: none;
 }
 
 .navBar.openMenu .createDocumentBtn:hover .createDocumentBtnTip {
-    display: none;
+	display: none;
 }
 
-.navBar.openMenu .createDocumentBtn:hover  {
-    height: 80px;
+.navBar.openMenu .createDocumentBtn:hover {
+	height: 80px;
 }
 
-.navBar.openMenu .myDocumentsBtn:hover  {
-    height: 80px;
+.navBar.openMenu .myDocumentsBtn:hover {
+	height: 80px;
 }
 
-
-.navBar.openMenu .userProfileBtn:hover  {
-    height: 80px;
+.navBar.openMenu .userProfileBtn:hover {
+	height: 80px;
 }
 
 .navBar.openMenu .userProfileBtn {
-    transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
 }
 
 .navBar.openMenu .menuBtn {
-    right: -8%;
-    transition: all 0.5s ease-in-out;
-    transform: rotate(180deg);
+	right: -8%;
+	transition: all 0.5s ease-in-out;
+	transform: rotate(180deg);
 }
 
 .navBar.openMenu .logoContainer {
-    left: 30%;
-    transition: all 0.5s ease-in-out;
+	left: 30%;
+	transition: all 0.5s ease-in-out;
 }
 .navBar.openMenu .logoutBtn {
-    // left: 40%;
-    width: 100%;
-    transition: all 0.5s ease-in-out;
+	width: 100%;
+	transition: all 0.5s ease-in-out;
 }
 
 .navBar.openMenu ~ .uniDoc {
-    margin-left: 150px;
-    width: calc(100% - 250px);
+	margin-left: 150px;
+	width: calc(100% - 250px);
 }
 
 .navBar.openMenu {
-    width: 250px;
+	width: 250px;
 }
 
 .docEditorContainer .fr-toolbar {
-    background-color: #6c7c83;
-
-   div button svg path {
-    fill: #fff
-    }
+	background-color: #6c7c83;
+	div button svg path {
+		fill: #fff;
+	}
 }
 
-.fr-box, .fr-toolbar {
-
-    width: 80vw;
-    border-radius: 0px !important;
-
+.fr-box,
+.fr-toolbar {
+	width: 80vw;
+	border-radius: 0px !important;
 }
 
 .fr-second-toolbar {
-    display: none;
- 
+	display: none;
 }
